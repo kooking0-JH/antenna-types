@@ -218,3 +218,19 @@ a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
   h2 { font-size: 21px; margin-top: 44px; }
 }
 .pager + .foot { margin-top: 32px; }
+
+/* 계산기 */
+.calc { margin-top: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.calc label { display: flex; align-items: center; gap: 10px; font-weight: 600; flex-wrap: wrap; }
+.calc input {
+  font: inherit; font-size: 20px; font-weight: 700; width: 140px; padding: 6px 10px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);
+}
+.calc input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.calc-err { color: var(--warn); font-size: 14px; margin-top: 6px; min-height: 1em; }
+.calc-out { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 12px; }
+.calc-out div { background: var(--bg); border-radius: 10px; padding: 12px 14px; }
+.calc-out span { display: block; font-size: 13px; color: var(--muted); }
+.calc-out b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.calc-out div.main b { color: var(--accent); }
+.num { font-variant-numeric: tabular-nums; }
