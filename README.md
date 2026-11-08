@@ -10,6 +10,8 @@ GitHub Pages로 게시하고, 티스토리 블로그(6k5ehn.tistory.com)에 ifra
 ```
 index.html          목차 (기초 + 안테나 5종 카드)
 basics.html         안테나 기초: 방사, 공진, 패턴과 널, 이득, 편파, SWR, 용어집
+dipole.html         1편 다이폴
+monopole.html       2편 모노폴과 휩
 assets/common.css   공통 스타일 (칠판 그림, Pretendard, 한국어+원어 라벨)
 assets/site.js      그림 애니메이션 + iframe 높이 자동 맞춤
 tistory-embed.html  티스토리 글에 붙여 넣는 코드 (저장소에 없어도 되지만 참고용)

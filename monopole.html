@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모노폴과 휩</title>
+<meta name="description" content="1/4파장 수직 안테나의 영상 원리, 접지면과 레이디얼, 대지 손실과 방사 패턴, 차량·핸디용 휩과 로딩 코일">
+<script>(function(){var r=document.documentElement;r.classList.add('js');var t=new URLSearchParams(location.search).get('theme'),e;try{e=self!==top}catch(x){e=true}if(t==='dark'||t==='light')r.setAttribute('data-theme',t);else if(e)r.setAttribute('data-theme','light');})()</script>
+<link rel="stylesheet" href="assets/common.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.6"/>
+    </filter>
+    <marker id="ah-c" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1L8 5L1 9" fill="none" stroke="#f2efe6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="series">
+    <a class="series-name" href="./">그림으로 보는 햄 안테나<span>Ham antennas, illustrated</span></a>
+    <a class="series-all" href="./">전체 목차</a>
+  </header>
+
+  <h1>모노폴과 휩<span class="en">Monopole &amp; whip</span></h1>
+  <p class="lead">도체 하나를 접지면 위에 수직으로 세운 안테나입니다. 접지면이 나머지 절반의 역할을 하므로 다이폴의 절반 길이로 동작하며, 수평면 무지향성이라 모빌·핸디·VHF/UHF 고정국에서 가장 널리 사용됩니다.</p>
+
+  <nav class="toc" aria-label="이 페이지 목차">
+    <div class="toc-title">이 페이지에서 다루는 내용</div>
+    <ol></ol>
+  </nav>
+
+  <!-- 1 -->
+  <h2 id="image">영상 원리<span class="en">Image theory</span></h2>
+  <p><span class="term">모노폴<i>(monopole)</i></span>은 길이 약 1/4파장의 도체를 <span class="term">접지면<i>(ground plane)</i></span> 위에 수직으로 세우고, 도체 아래쪽 끝과 접지면 사이에서 급전하는 안테나입니다.</p>
+  <p>도체에서 방사된 전파는 접지면에서 반사되는데, 접지면 위쪽에서 보면 이 반사파는 접지면 아래에 같은 길이의 도체가 하나 더 있는 것과 같은 효과를 냅니다. 이 가상의 도체를 <span class="term">영상<i>(image)</i></span>이라고 하며, 실제 소자와 영상을 합친 전체는 수직 반파장 다이폴과 같은 방식으로 동작합니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 330" role="img" aria-labelledby="m1t">
+        <title id="m1t">접지면 위 1/4파장 모노폴과 접지면 아래의 가상 영상, 그리고 이와 등가인 수직 반파장 다이폴</title>
+        <g class="sketch">
+          <line class="ln st-or draw" pathLength="1" x1="110" y1="64" x2="110" y2="158" stroke-width="7"/>
+          <line class="ln st-or draw" pathLength="1" x1="110" y1="182" x2="110" y2="276" stroke-width="7"/>
+
+          <line class="ln chalk" x1="300" y1="170" x2="640" y2="170" stroke-width="3"/>
+          <line class="ln faint" x1="312" y1="176" x2="300" y2="190" stroke-width="1.5"/>
+          <line class="ln faint" x1="352" y1="176" x2="340" y2="190" stroke-width="1.5"/>
+          <line class="ln faint" x1="392" y1="176" x2="380" y2="190" stroke-width="1.5"/>
+          <line class="ln faint" x1="512" y1="176" x2="500" y2="190" stroke-width="1.5"/>
+          <line class="ln faint" x1="552" y1="176" x2="540" y2="190" stroke-width="1.5"/>
+          <line class="ln faint" x1="592" y1="176" x2="580" y2="190" stroke-width="1.5"/>
+          <line class="ln faint" x1="632" y1="176" x2="620" y2="190" stroke-width="1.5"/>
+          <line class="ln st-or draw" pathLength="1" x1="450" y1="160" x2="450" y2="64" stroke-width="7"/>
+          <line class="ln st-or lbl" x1="450" y1="182" x2="450" y2="276" stroke-width="7" stroke-dasharray="10 9" opacity=".55"/>
+        </g>
+        <rect x="442" y="160" width="16" height="12" rx="3" fill="#f2efe6"/>
+        <rect x="102" y="162" width="16" height="16" rx="3" fill="#f2efe6"/>
+        <text class="tt" x="222" y="180" text-anchor="middle">=</text>
+        <g class="lbl">
+          <text class="k" x="110" y="304" text-anchor="middle">수직 반파장 다이폴</text>
+          <text class="e" x="110" y="321" text-anchor="middle">Vertical half-wave dipole</text>
+          <text class="k" x="470" y="100">실제 소자 · λ/4</text>
+          <text class="e" x="470" y="117">Real element</text>
+          <text class="k" x="310" y="142">접지면</text>
+          <text class="e" x="310" y="159">Ground plane</text>
+          <text class="k" x="470" y="236">영상 (가상 소자)</text>
+          <text class="e" x="470" y="253">Image</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>오른쪽: 접지면 위 1/4파장 소자(실선)와 접지면에 의해 생기는 영상(점선). 접지면 위 공간에서의 방사는 왼쪽 수직 반파장 다이폴의 위쪽 절반과 같음.</figcaption>
+  </figure>
+
+  <p>방사가 접지면 위쪽 공간에서만 일어나므로 같은 전류에서 방사 저항도 다이폴의 절반이 됩니다. 완전 도체 접지면 위 1/4파장 모노폴의 급전점 임피던스는 약 36 Ω으로, 반파장 다이폴(약 73 Ω)의 절반입니다.</p>
+
+  <!-- 2 -->
+  <h2 id="radials">접지면과 레이디얼<span class="en">Ground plane and radials</span></h2>
+  <p>실제 설치에서는 넓은 금속판 대신 <span class="term">레이디얼<i>(radial)</i></span>이라 부르는 도선을 소자 아래쪽에서 방사형으로 뻗어 접지면을 구성합니다. 설치 방식에 따라 필요한 개수와 길이, 급전점 임피던스가 달라집니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 300" role="img" aria-labelledby="m2t">
+        <title id="m2t">지면 설치 레이디얼, 수평 공중 레이디얼, 하향 레이디얼의 세 가지 접지면 구성</title>
+        <g class="sketch">
+          <line class="ln faint" x1="25" y1="222" x2="225" y2="222" stroke-width="3"/>
+          <g class="ln st-gr" stroke-width="1.6">
+            <line x1="125" y1="222" x2="215" y2="226"/><line x1="125" y1="222" x2="203" y2="237"/><line x1="125" y1="222" x2="170" y2="245"/>
+            <line x1="125" y1="222" x2="125" y2="250"/><line x1="125" y1="222" x2="80" y2="245"/><line x1="125" y1="222" x2="47" y2="237"/>
+            <line x1="125" y1="222" x2="35" y2="226"/><line x1="125" y1="222" x2="47" y2="211"/><line x1="125" y1="222" x2="80" y2="204"/>
+            <line x1="125" y1="222" x2="170" y2="204"/><line x1="125" y1="222" x2="203" y2="211"/><line x1="125" y1="222" x2="148" y2="248"/><line x1="125" y1="222" x2="102" y2="248"/>
+          </g>
+          <line class="ln st-or draw" pathLength="1" x1="125" y1="214" x2="125" y2="88" stroke-width="6"/>
+
+          <line class="ln faint" x1="340" y1="182" x2="340" y2="252" stroke-width="5"/>
+          <g class="ln st-gr" stroke-width="2.4">
+            <line x1="340" y1="174" x2="422" y2="174"/><line x1="340" y1="174" x2="258" y2="174"/>
+            <line x1="340" y1="174" x2="372" y2="196"/><line x1="340" y1="174" x2="308" y2="154"/>
+          </g>
+          <line class="ln st-or draw" pathLength="1" x1="340" y1="166" x2="340" y2="80" stroke-width="6"/>
+
+          <line class="ln faint" x1="555" y1="182" x2="555" y2="252" stroke-width="5"/>
+          <g class="ln st-gr" stroke-width="2.4">
+            <line x1="555" y1="174" x2="617" y2="222"/><line x1="555" y1="174" x2="493" y2="222"/>
+            <line x1="555" y1="174" x2="579" y2="236"/><line x1="555" y1="174" x2="531" y2="208"/>
+          </g>
+          <line class="ln st-or draw" pathLength="1" x1="555" y1="166" x2="555" y2="80" stroke-width="6"/>
+        </g>
+        <rect x="117" y="212" width="16" height="12" rx="3" fill="#f2efe6"/>
+        <rect x="332" y="166" width="16" height="12" rx="3" fill="#f2efe6"/>
+        <rect x="547" y="166" width="16" height="12" rx="3" fill="#f2efe6"/>
+        <text class="tt" x="125" y="36" text-anchor="middle">지면 설치</text>
+        <text class="e" x="125" y="54" text-anchor="middle">Ground-mounted</text>
+        <text class="tt" x="340" y="36" text-anchor="middle">수평 공중</text>
+        <text class="e" x="340" y="54" text-anchor="middle">Elevated, horizontal</text>
+        <text class="tt" x="555" y="36" text-anchor="middle">하향 45°</text>
+        <text class="e" x="555" y="54" text-anchor="middle">Elevated, drooping</text>
+        <g class="lbl">
+          <text class="k" x="125" y="276" text-anchor="middle">다수 · 지면에 포설</text>
+          <text class="e" x="125" y="293" text-anchor="middle">Many radials, length less critical</text>
+          <text class="k" x="340" y="276" text-anchor="middle">λ/4 × 2~4가닥 · 약 36 Ω</text>
+          <text class="e" x="340" y="293" text-anchor="middle">Few resonant radials</text>
+          <text class="k" x="555" y="276" text-anchor="middle">λ/4 × 3~4가닥 · 약 50 Ω</text>
+          <text class="e" x="555" y="293" text-anchor="middle">Direct 50 Ω feed</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>주황은 방사 소자, 초록은 레이디얼. 임피던스는 이상적인 조건의 대략값이며, 실제 값은 설치 높이와 주변 환경에 따라 달라짐.</figcaption>
+  </figure>
+
+  <h3>지면 설치 레이디얼<span class="en">Ground-mounted radials</span></h3>
+  <p>소자를 지면 가까이 세우고 레이디얼을 지표에 깔거나 얕게 묻는 방식입니다. 레이디얼이 흙과 맞닿아 있어 공진 길이의 의미가 약해지고, 대신 <b>개수</b>가 효율을 좌우합니다. 대지의 고주파 손실을 줄이려면 수십 가닥이 필요하며, 개수가 적을수록 손실 저항이 커집니다. HF 대역의 저역(160 m, 80 m) 수직 안테나에서 주로 사용합니다.</p>
+
+  <h3>공중 레이디얼<span class="en">Elevated radials</span></h3>
+  <p>소자를 지면에서 띄워 설치하고 1/4파장 공진 레이디얼을 2~4가닥 두는 방식입니다. 레이디얼이 공진하므로 적은 개수로도 지면 설치 방식의 다수 레이디얼에 근접한 효율을 얻습니다. 레이디얼을 수평으로 두면 급전점 임피던스는 약 36 Ω이고, 약 45° 아래로 기울이면 50 Ω 부근까지 올라가 동축 케이블을 직접 연결할 수 있습니다. VHF/UHF용 <span class="term">그라운드 플레인 안테나<i>(ground plane antenna)</i></span>가 이 형태입니다.</p>
+
+  <div class="box myth">
+    <b>흔한 오해 · "SWR이 낮으니 효율도 좋다"</b>
+    <p>레이디얼이 부족한 지면 설치 수직 안테나는 대지 손실 저항이 급전점 임피던스에 더해집니다. 이론값 36 Ω에 손실 저항 15 Ω이 더해지면 급전점은 약 51 Ω이 되어 SWR은 거의 1 : 1이 되지만, 송신 전력의 약 30%는 방사되지 않고 대지에서 열로 소모됩니다.</p>
+    <p>즉 수직 안테나에서는 SWR이 오히려 너무 좋은 것이 접지 손실의 신호일 수 있습니다. 레이디얼을 늘렸더니 SWR이 나빠지고 신호는 강해지는 현상도 같은 이유입니다.</p>
+  </div>
+
+  <!-- 3 -->
+  <h2 id="pattern">방사 패턴<span class="en">Radiation pattern</span></h2>
+  <p>수직 모노폴은 수평면에서 모든 방향으로 같은 세기로 방사하는 <span class="term">무지향성<i>(omnidirectional)</i></span> 안테나입니다. 수직면 단면에서는 천정 방향이 널이고, 낮은 앙각에 방사가 집중됩니다.</p>
+  <p>완전 도체 대지 위에서는 앙각 0°, 즉 지평선 방향이 최대이지만 실제 대지는 전도율이 유한해 낮은 앙각의 방사가 크게 감쇠합니다. 그 결과 실제 최대 방사는 앙각 약 20~25° 부근으로 올라갑니다. 해수면이나 습한 평지처럼 전도율이 높은 대지에서는 저앙각 감쇠가 줄어들어, 수직 안테나가 DX에 특히 유리해집니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 300" role="img" aria-labelledby="m3t">
+        <title id="m3t">완전 도체 대지와 실제 대지에서 1/4파장 수직 모노폴의 고각 방사 패턴 비교</title>
+        <g class="sketch">
+          <line class="ln faint" x1="100" y1="250" x2="580" y2="250" stroke-width="3"/>
+          <line class="ln faint lbl" x1="340" y1="250" x2="535" y2="159" stroke-width="1.3" stroke-dasharray="4 5"/>
+          <line class="ln faint lbl" x1="340" y1="250" x2="448" y2="63" stroke-width="1.3" stroke-dasharray="4 5"/>
+          <path class="ln st-bl" stroke-width="2" stroke-dasharray="6 6" opacity=".7" d="M540.0 250.0 L539.7 243.0 L538.8 236.1 L537.3 229.3 L535.2 222.6 L532.6 216.0 L529.4 209.7 L525.7 203.7 L521.5 197.9 L516.9 192.5 L511.8 187.5 L506.4 182.8 L500.6 178.5 L494.4 174.7 L488.0 171.3 L481.4 168.4 L474.6 165.9 L467.7 163.9 L460.6 162.4 L453.5 161.3 L446.4 160.7 L439.3 160.6 L432.3 160.9 L425.3 161.6 L418.5 162.8 L411.9 164.4 L405.4 166.3 L399.1 168.7 L393.1 171.3 L387.3 174.3 L381.8 177.6 L376.6 181.2 L371.7 185.1 L367.1 189.2 L362.8 193.5 L358.9 198.0 L355.4 202.7 L352.2 207.6 L349.3 212.6 L346.9 217.7 L344.8 222.9 L343.1 228.2 L341.7 233.6 L340.8 239.1 L340.2 244.5 L340.0 250.0 L339.8 244.5 L339.2 239.1 L338.3 233.6 L336.9 228.2 L335.2 222.9 L333.1 217.7 L330.7 212.6 L327.8 207.6 L324.6 202.7 L321.1 198.0 L317.2 193.5 L312.9 189.2 L308.3 185.1 L303.4 181.2 L298.2 177.6 L292.7 174.3 L286.9 171.3 L280.9 168.7 L274.6 166.3 L268.1 164.4 L261.5 162.8 L254.7 161.6 L247.7 160.9 L240.7 160.6 L233.6 160.7 L226.5 161.3 L219.4 162.4 L212.3 163.9 L205.4 165.9 L198.6 168.4 L192.0 171.3 L185.6 174.7 L179.4 178.5 L173.6 182.8 L168.2 187.5 L163.1 192.5 L158.5 197.9 L154.3 203.7 L150.6 209.7 L147.4 216.0 L144.8 222.6 L142.7 229.3 L141.2 236.1 L140.3 243.0 L140.0 250.0"/>
+          <path class="ln st-bl draw" pathLength="1" stroke-width="3" d="M340.0 250.0 L379.8 248.6 L411.3 245.0 L436.0 239.9 L455.0 233.8 L469.2 227.2 L479.5 220.3 L486.5 213.5 L490.9 206.7 L493.0 200.3 L493.2 194.2 L491.9 188.6 L489.4 183.5 L485.8 178.9 L481.4 174.8 L476.4 171.3 L470.8 168.3 L464.8 165.8 L458.4 164.0 L451.9 162.6 L445.2 161.7 L438.4 161.4 L431.6 161.5 L424.8 162.2 L418.1 163.2 L411.6 164.7 L405.2 166.6 L399.0 168.9 L393.0 171.5 L387.2 174.4 L381.7 177.7 L376.5 181.3 L371.6 185.1 L367.1 189.2 L362.8 193.5 L358.9 198.0 L355.4 202.7 L352.2 207.6 L349.3 212.6 L346.9 217.7 L344.8 222.9 L343.1 228.2 L341.7 233.6 L340.8 239.1 L340.2 244.5 L340.0 250.0 L339.8 244.5 L339.2 239.1 L338.3 233.6 L336.9 228.2 L335.2 222.9 L333.1 217.7 L330.7 212.6 L327.8 207.6 L324.6 202.7 L321.1 198.0 L317.2 193.5 L312.9 189.2 L308.4 185.1 L303.5 181.3 L298.3 177.7 L292.8 174.4 L287.0 171.5 L281.0 168.9 L274.8 166.6 L268.4 164.7 L261.9 163.2 L255.2 162.2 L248.4 161.5 L241.6 161.4 L234.8 161.7 L228.1 162.6 L221.6 164.0 L215.2 165.8 L209.2 168.3 L203.6 171.3 L198.6 174.8 L194.2 178.9 L190.6 183.5 L188.1 188.6 L186.8 194.2 L187.0 200.3 L189.1 206.7 L193.5 213.5 L200.5 220.3 L210.8 227.2 L225.0 233.8 L244.0 239.9 L268.7 245.0 L300.2 248.6 L340.0 250.0"/>
+          <line class="ln chalk" x1="40" y1="54" x2="76" y2="54" stroke-width="2" stroke-dasharray="6 6" opacity=".8" style="stroke:#7fb8d8"/>
+          <line class="ln" x1="40" y1="94" x2="76" y2="94" stroke-width="3" style="stroke:#7fb8d8"/>
+        </g>
+        <line x1="340" y1="250" x2="340" y2="218" stroke="#e8893a" stroke-width="6" stroke-linecap="round"/>
+        <text class="k" x="88" y="52">완전 도체 대지 (이론)</text>
+        <text class="e" x="88" y="69">Perfect ground</text>
+        <text class="k" x="88" y="92">실제 대지 (개략)</text>
+        <text class="e" x="88" y="109">Average ground, approximate</text>
+        <g class="lbl">
+          <text class="k hl" x="540" y="154">약 25°</text>
+          <text class="k hl" x="452" y="58">60°</text>
+          <text class="k" x="550" y="216">저앙각 감쇠</text>
+          <text class="e" x="550" y="233">Ground loss</text>
+          <text class="k" x="340" y="284" text-anchor="middle">수평면에서는 모든 방향 동일</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>수직면 단면. 점선은 완전 도체 대지 위 이론 패턴, 실선은 실제 대지의 저앙각 감쇠를 개략적으로 반영한 패턴. 천정 방향(90°)은 널.</figcaption>
+  </figure>
+
+  <p>수평 다이폴과 비교하면, 수직 안테나는 설치 높이가 낮아도 낮은 앙각을 확보하기 쉽다는 장점이 있습니다. 반면 수평 편파 안테나보다 주변 잡음(전력선, 전자기기)을 더 많이 수신하는 경향이 있고, 근거리용 고앙각 방사는 약합니다.</p>
+
+  <!-- 4 -->
+  <h2 id="whip">휩 안테나<span class="en">Whip antennas</span></h2>
+  <p><span class="term">휩<i>(whip)</i></span>은 탄성이 있는 막대 하나로 만든 모노폴입니다. 차량용, 핸디(휴대용 무전기)용, 이동운용용으로 쓰이며, 차체나 무전기 본체가 접지면 역할을 합니다. 길이와 정합 방식에 따라 세 가지로 나눌 수 있습니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 300" role="img" aria-labelledby="m4t">
+        <title id="m4t">차량 지붕의 1/4파장 휩, 베이스 정합 코일이 있는 5/8파장 휩, 로딩 코일로 단축한 핸디용 휩</title>
+        <g class="sketch">
+          <path class="ln faint" d="M30 236 L36 214 L78 202 L98 184 L162 184 L184 204 L220 210 L222 236 Z" stroke-width="2.5"/>
+          <circle class="ln faint" cx="72" cy="238" r="13" stroke-width="2.5"/>
+          <circle class="ln faint" cx="182" cy="238" r="13" stroke-width="2.5"/>
+          <line class="ln st-or draw" pathLength="1" x1="130" y1="182" x2="130" y2="96" stroke-width="5"/>
+
+          <line class="ln chalk" x1="285" y1="232" x2="395" y2="232" stroke-width="3"/>
+          <path class="ln chalk draw" pathLength="1" d="M340 230 L340 224 L330 220 L350 214 L330 208 L350 202 L340 198" stroke-width="2.5"/>
+          <line class="ln st-or draw d2" pathLength="1" x1="340" y1="196" x2="340" y2="66" stroke-width="5"/>
+
+          <rect class="ln chalk" x="533" y="174" width="44" height="78" rx="7" stroke-width="2.5"/>
+          <rect class="ln faint" x="541" y="186" width="28" height="18" rx="2" stroke-width="1.6"/>
+          <line class="ln st-or draw" pathLength="1" x1="555" y1="172" x2="555" y2="146" stroke-width="5"/>
+          <path class="ln chalk draw d2" pathLength="1" d="M555 146 L547 142 L563 136 L547 130 L563 124 L555 120" stroke-width="2.5"/>
+          <line class="ln st-or draw d3" pathLength="1" x1="555" y1="118" x2="555" y2="92" stroke-width="5"/>
+        </g>
+        <text class="tt" x="125" y="36" text-anchor="middle">λ/4 휩</text>
+        <text class="e" x="125" y="54" text-anchor="middle">Quarter-wave whip</text>
+        <text class="tt" x="340" y="36" text-anchor="middle">5/8λ 휩</text>
+        <text class="e" x="340" y="54" text-anchor="middle">Five-eighths-wave whip</text>
+        <text class="tt" x="555" y="36" text-anchor="middle">단축 휩</text>
+        <text class="e" x="555" y="54" text-anchor="middle">Loaded short whip</text>
+        <g class="lbl">
+          <text class="s" x="146" y="132">약 λ/4</text>
+          <text class="s" x="358" y="214">정합 코일</text>
+          <text class="s" x="575" y="136">로딩 코일</text>
+          <text class="k" x="125" y="276" text-anchor="middle">차체가 접지면 · 약 36 Ω</text>
+          <text class="e" x="125" y="293" text-anchor="middle">Car body as ground plane</text>
+          <text class="k" x="340" y="276" text-anchor="middle">저앙각 이득 증가</text>
+          <text class="e" x="340" y="293" text-anchor="middle">Lower angle, more gain</text>
+          <text class="k" x="555" y="276" text-anchor="middle">짧고 편리 · 효율 감소</text>
+          <text class="e" x="555" y="293" text-anchor="middle">Compact, lower efficiency</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>길이는 비율대로 그리지 않음. 코일은 전기적 길이 보충(로딩)이나 임피던스 정합에 쓰임.</figcaption>
+  </figure>
+
+  <h3>λ/4 휩<span class="en">Quarter-wave whip</span></h3>
+  <p>가장 기본적인 형태로, 별도의 정합 소자 없이 차량 지붕 중앙처럼 넓은 금속면 위에 설치합니다. 지붕 중앙이 접지면으로서 가장 유리하며, 트렁크나 범퍼 쪽으로 갈수록 패턴이 차체 방향으로 치우칩니다.</p>
+
+  <h3>5/8λ 휩<span class="en">Five-eighths-wave whip</span></h3>
+  <p>소자를 약 5/8파장으로 늘리면 전류 분포가 바뀌어 수직면 패턴이 더 낮은 앙각으로 눌리며, λ/4 휩보다 저앙각 이득이 약 2~3 dB 높아집니다. 이 길이에서는 급전점 임피던스가 50 Ω과 크게 다르므로 아래쪽에 정합 코일을 둡니다. 2 m 모빌 안테나에서 흔히 사용하는 형태입니다.</p>
+
+  <h3>단축 휩<span class="en">Loaded short whip</span></h3>
+  <p>소자가 1/4파장보다 짧으면 급전점에서 용량성 리액턴스가 나타나 공진하지 않습니다. 이를 <span class="term">로딩 코일<i>(loading coil)</i></span>의 유도성 리액턴스로 상쇄해 공진시키는 것이 단축 휩입니다. 핸디의 고무 안테나와 HF 모빌 안테나가 대표적입니다.</p>
+  <p>짧을수록 방사 저항이 작아지는 반면 코일의 손실 저항은 남으므로, 효율이 크게 낮아지고 대역폭도 좁아집니다. 코일을 소자의 가운데나 위쪽에 둘수록 아래쪽 소자에 흐르는 전류가 커져 효율이 다소 개선됩니다.</p>
+
+  <!-- 5 -->
+  <h2 id="length">길이 계산<span class="en">Cutting length</span></h2>
+  <p>1/4파장 소자는 반파장 다이폴의 한쪽 길이와 같은 식으로 계산합니다. 공중 레이디얼도 같은 길이에서 시작해 조정합니다.</p>
+
+  <div class="calc">
+    <label for="freq">주파수 <input id="freq" type="number" inputmode="decimal" min="0.1" step="0.001" value="145"> MHz</label>
+    <div class="calc-err" id="freq-err" role="alert"></div>
+    <div class="calc-out" aria-live="polite">
+      <div class="main"><span>λ/4 소자 · 레이디얼 (71.25 / f)</span><b id="out-q">49.1 cm</b></div>
+      <div><span>5/8λ 소자 (178.1 / f, 조정 전)</span><b id="out-58">1.23 m</b></div>
+      <div><span>자유공간 λ/4 (75 / f)</span><b id="out-free">51.7 cm</b></div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="num">
+      <thead><tr><th>밴드</th><th>주파수 예 (MHz)</th><th>λ/4 소자</th><th>5/8λ 소자</th></tr></thead>
+      <tbody>
+        <tr><td>40 m</td><td>7.1</td><td>10.04 m</td><td>25.08 m</td></tr>
+        <tr><td>20 m</td><td>14.2</td><td>5.02 m</td><td>12.54 m</td></tr>
+        <tr><td>10 m</td><td>28.5</td><td>2.50 m</td><td>6.25 m</td></tr>
+        <tr><td>6 m</td><td>50.2</td><td>1.42 m</td><td>3.55 m</td></tr>
+        <tr><td>2 m</td><td>145</td><td>49.1 cm</td><td>1.23 m</td></tr>
+        <tr><td>70 cm</td><td>435</td><td>16.4 cm</td><td>40.9 cm</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box key">
+    <b>설치 체크리스트</b>
+    <p>① 지면 설치형은 레이디얼 개수를 우선, 공중 설치형은 레이디얼 길이(공진)를 우선 ② 공중 레이디얼은 최소 2가닥 이상, 대칭으로 배치 ③ 동축 케이블 외피 전류를 막기 위해 급전점 아래에 초크 설치 ④ 차량용은 지붕 중앙 설치가 가장 유리 ⑤ 지면 설치형에서 SWR이 지나치게 낮으면 접지 손실을 먼저 의심</p>
+  </div>
+
+  <nav class="pager" aria-label="이전·다음 편">
+    <a class="pg prev" href="dipole.html"><span class="pg-dir">← 이전 편</span><span class="pg-title">다이폴</span></a>
+    <span class="pg next soon"><span class="pg-dir">다음 편 →</span><span class="pg-title">야기-우다 <small>준비 중</small></span></span>
+  </nav>
+
+  <footer class="foot">6K5EHN · 그림으로 보는 햄 안테나</footer>
+</div>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var f = document.getElementById('freq'), err = document.getElementById('freq-err');
+  var q = document.getElementById('out-q'), f58 = document.getElementById('out-58'), free = document.getElementById('out-free');
+  function fmt(m) { return m < 1 ? (m * 100).toFixed(1) + ' cm' : (m >= 100 ? m.toFixed(1) : m.toFixed(2)) + ' m'; }
+  function calc() {
+    var v = parseFloat(f.value);
+    if (!(v > 0)) { err.textContent = '0보다 큰 주파수(MHz)를 입력하세요.'; return; }
+    err.textContent = '';
+    q.textContent = fmt(71.25 / v); f58.textContent = fmt(178.1 / v); free.textContent = fmt(75 / v);
+  }
+  f.addEventListener('input', calc);
+  calc();
+})();
+</script>
+</body>
+</html>
