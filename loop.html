@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>루프 안테나</title>
+<meta name="description" content="소형 루프와 1파장 루프의 패턴 차이, 널을 이용한 방향탐지와 센스 안테나·심장형 패턴, 송신용 마그네틱 루프">
+<script>(function(){var r=document.documentElement;r.classList.add('js');var t=new URLSearchParams(location.search).get('theme'),e;try{e=self!==top}catch(x){e=true}if(t==='dark'||t==='light')r.setAttribute('data-theme',t);else if(e)r.setAttribute('data-theme','light');})()</script>
+<link rel="stylesheet" href="assets/common.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.6"/>
+    </filter>
+    <marker id="ah-c" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1L8 5L1 9" fill="none" stroke="#f2efe6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="series">
+    <a class="series-name" href="./">그림으로 보는 햄 안테나<span>Ham antennas, illustrated</span></a>
+    <a class="series-all" href="./">전체 목차</a>
+  </header>
+
+  <h1>루프<span class="en">Loop antenna</span></h1>
+  <p class="lead">도선을 닫힌 고리 모양으로 만든 안테나입니다. 둘레가 파장보다 충분히 작은 소형 루프와 약 1파장인 대형 루프는 이름만 같을 뿐 패턴이 정반대입니다. 소형 루프의 날카로운 널은 ARDF를 비롯한 방향탐지의 기본 도구입니다.</p>
+
+  <nav class="toc" aria-label="이 페이지 목차">
+    <div class="toc-title">이 페이지에서 다루는 내용</div>
+    <ol></ol>
+  </nav>
+
+  <!-- 1 -->
+  <h2 id="types">소형 루프와 대형 루프<span class="en">Small loops and large loops</span></h2>
+  <p>둘레가 약 0.1파장 이하인 <span class="term">소형 루프<i>(small loop)</i></span>는 루프 전체에 거의 같은 크기·위상의 전류가 흐르며, 자기장 성분에 주로 반응합니다. 그래서 <span class="term">자기 루프<i>(magnetic loop)</i></span>라고도 부릅니다. 방사가 최대인 방향은 <b>루프 면과 나란한 방향</b>이고, 루프 면에 수직인 <b>루프 축 방향이 널</b>입니다.</p>
+  <p>둘레가 약 1파장인 <span class="term">1파장 루프<i>(full-wave loop)</i></span>는 도선을 따라 전류의 크기와 방향이 바뀌며, 반파장 다이폴 두 개를 마주 붙인 것처럼 동작합니다. 방사가 최대인 방향은 <b>루프 축 방향</b>으로, 소형 루프와 정반대입니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 310" role="img" aria-labelledby="l1t">
+        <title id="l1t">소형 루프는 루프 면 방향이 최대이고 축 방향이 널, 1파장 루프는 축 방향이 최대인 수평면 패턴 비교</title>
+        <g class="sketch">
+          <line class="ln faint" x1="40" y1="165" x2="300" y2="165" stroke-width="1.3" stroke-dasharray="5 6"/>
+          <path class="ln st-bl draw" pathLength="1" stroke-width="3" d="M170.0 165.0 L174.7 164.8 L179.4 164.0 L183.9 162.8 L188.3 161.1 L192.5 159.0 L196.5 156.4 L200.1 153.4 L203.4 150.1 L206.4 146.5 L209.0 142.5 L211.1 138.3 L212.8 133.9 L214.0 129.4 L214.8 124.7 L215.0 120.0 L214.8 115.3 L214.0 110.6 L212.8 106.1 L211.1 101.7 L209.0 97.5 L206.4 93.5 L203.4 89.9 L200.1 86.6 L196.5 83.6 L192.5 81.0 L188.3 78.9 L183.9 77.2 L179.4 76.0 L174.7 75.2 L170.0 75.0 L165.3 75.2 L160.6 76.0 L156.1 77.2 L151.7 78.9 L147.5 81.0 L143.5 83.6 L139.9 86.6 L136.6 89.9 L133.6 93.5 L131.0 97.5 L128.9 101.7 L127.2 106.1 L126.0 110.6 L125.2 115.3 L125.0 120.0 L125.2 124.7 L126.0 129.4 L127.2 133.9 L128.9 138.3 L131.0 142.5 L133.6 146.5 L136.6 150.1 L139.9 153.4 L143.5 156.4 L147.5 159.0 L151.7 161.1 L156.1 162.8 L160.6 164.0 L165.3 164.8 L170.0 165.0 L165.3 165.2 L160.6 166.0 L156.1 167.2 L151.7 168.9 L147.5 171.0 L143.5 173.6 L139.9 176.6 L136.6 179.9 L133.6 183.5 L131.0 187.5 L128.9 191.7 L127.2 196.1 L126.0 200.6 L125.2 205.3 L125.0 210.0 L125.2 214.7 L126.0 219.4 L127.2 223.9 L128.9 228.3 L131.0 232.5 L133.6 236.5 L136.6 240.1 L139.9 243.4 L143.5 246.4 L147.5 249.0 L151.7 251.1 L156.1 252.8 L160.6 254.0 L165.3 254.8 L170.0 255.0 L174.7 254.8 L179.4 254.0 L183.9 252.8 L188.3 251.1 L192.5 249.0 L196.5 246.4 L200.1 243.4 L203.4 240.1 L206.4 236.5 L209.0 232.5 L211.1 228.3 L212.8 223.9 L214.0 219.4 L214.8 214.7 L215.0 210.0 L214.8 205.3 L214.0 200.6 L212.8 196.1 L211.1 191.7 L209.0 187.5 L206.4 183.5 L203.4 179.9 L200.1 176.6 L196.5 173.6 L192.5 171.0 L188.3 168.9 L183.9 167.2 L179.4 166.0 L174.7 165.2 L170.0 165.0 Z"/>
+          <ellipse class="ln st-or" cx="170" cy="165" rx="7" ry="26" stroke-width="5"/>
+
+          <line class="ln faint" x1="380" y1="165" x2="640" y2="165" stroke-width="1.3" stroke-dasharray="5 6"/>
+          <path class="ln st-bl draw d2" pathLength="1" stroke-width="3" d="M600.0 165.0 L599.8 160.3 L599.0 155.6 L597.8 151.1 L596.1 146.7 L594.0 142.5 L591.4 138.5 L588.4 134.9 L585.1 131.6 L581.5 128.6 L577.5 126.0 L573.3 123.9 L568.9 122.2 L564.4 121.0 L559.7 120.2 L555.0 120.0 L550.3 120.2 L545.6 121.0 L541.1 122.2 L536.7 123.9 L532.5 126.0 L528.5 128.6 L524.9 131.6 L521.6 134.9 L518.6 138.5 L516.0 142.5 L513.9 146.7 L512.2 151.1 L511.0 155.6 L510.2 160.3 L510.0 165.0 L509.8 160.3 L509.0 155.6 L507.8 151.1 L506.1 146.7 L504.0 142.5 L501.4 138.5 L498.4 134.9 L495.1 131.6 L491.5 128.6 L487.5 126.0 L483.3 123.9 L478.9 122.2 L474.4 121.0 L469.7 120.2 L465.0 120.0 L460.3 120.2 L455.6 121.0 L451.1 122.2 L446.7 123.9 L442.5 126.0 L438.5 128.6 L434.9 131.6 L431.6 134.9 L428.6 138.5 L426.0 142.5 L423.9 146.7 L422.2 151.1 L421.0 155.6 L420.2 160.3 L420.0 165.0 L420.2 169.7 L421.0 174.4 L422.2 178.9 L423.9 183.3 L426.0 187.5 L428.6 191.5 L431.6 195.1 L434.9 198.4 L438.5 201.4 L442.5 204.0 L446.7 206.1 L451.1 207.8 L455.6 209.0 L460.3 209.8 L465.0 210.0 L469.7 209.8 L474.4 209.0 L478.9 207.8 L483.3 206.1 L487.5 204.0 L491.5 201.4 L495.1 198.4 L498.4 195.1 L501.4 191.5 L504.0 187.5 L506.1 183.3 L507.8 178.9 L509.0 174.4 L509.8 169.7 L510.0 165.0 L510.2 169.7 L511.0 174.4 L512.2 178.9 L513.9 183.3 L516.0 187.5 L518.6 191.5 L521.6 195.1 L524.9 198.4 L528.5 201.4 L532.5 204.0 L536.7 206.1 L541.1 207.8 L545.6 209.0 L550.3 209.8 L555.0 210.0 L559.7 209.8 L564.4 209.0 L568.9 207.8 L573.3 206.1 L577.5 204.0 L581.5 201.4 L585.1 198.4 L588.4 195.1 L591.4 191.5 L594.0 187.5 L596.1 183.3 L597.8 178.9 L599.0 174.4 L599.8 169.7 L600.0 165.0 Z"/>
+          <ellipse class="ln st-or" cx="510" cy="165" rx="12" ry="44" stroke-width="5"/>
+        </g>
+        <text class="tt" x="170" y="36" text-anchor="middle">소형 루프</text>
+        <text class="e" x="170" y="54" text-anchor="middle">Small loop · 둘레 0.1λ 이하</text>
+        <text class="tt" x="510" y="36" text-anchor="middle">1파장 루프</text>
+        <text class="e" x="510" y="54" text-anchor="middle">Full-wave loop · 둘레 약 1λ</text>
+        <g class="lbl">
+          <text class="k hl" x="52" y="155">널</text>
+          <text class="k hl" x="276" y="155">널</text>
+          <text class="e" x="300" y="182" text-anchor="end">루프 축</text>
+          <text class="k" x="170" y="284" text-anchor="middle">루프 면 방향 최대 · 축 방향 널</text>
+          <text class="e" x="170" y="301" text-anchor="middle">Max in the loop plane</text>
+          <text class="k" x="510" y="284" text-anchor="middle">루프 축 방향 최대</text>
+          <text class="e" x="510" y="301" text-anchor="middle">Max along the loop axis</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>루프를 세워 두고 위에서 본 수평면 패턴. 주황 타원은 비스듬히 본 루프, 점선은 루프 면에 수직인 축. 두 루프의 최대 방향이 90° 다름.</figcaption>
+  </figure>
+
+  <div class="box myth">
+    <b>흔한 오해 · "루프 안테나는 모두 같은 패턴이다"</b>
+    <p>소형 루프와 1파장 루프는 전류 분포가 다르기 때문에 최대 방사 방향이 서로 90° 다릅니다. 방향탐지용 수신 루프나 송신용 마그네틱 루프는 소형 루프이고, 쿼드 안테나나 수평 1파장 루프는 대형 루프입니다. 어떤 루프인지 먼저 구분해야 패턴을 올바르게 해석할 수 있습니다.</p>
+  </div>
+
+  <!-- 2 -->
+  <h2 id="df">널을 이용한 방향탐지<span class="en">Direction finding with the null</span></h2>
+  <p>소형 루프의 8자 패턴에서 최대 방향은 넓고 완만하지만, 널은 매우 좁고 깊습니다. 루프를 돌리며 신호가 가장 작아지는 지점을 찾으면, 최대 지점을 찾을 때보다 정확도가 높은 방위를 얻을 수 있습니다. 그래서 방향탐지에서는 최대가 아니라 <b>널</b>로 방위를 측정합니다.</p>
+  <p>다만 8자 패턴에는 널이 앞뒤로 두 개 있으므로, 널로 얻은 방위선만으로는 송신소가 어느 쪽에 있는지 알 수 없습니다. 이를 <span class="term">180° 모호성<i>(180° ambiguity)</i></span>이라고 합니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 250" role="img" aria-labelledby="l2t">
+        <title id="l2t">루프의 널로 얻은 방위선 양쪽 끝에 송신소 후보가 두 개 있는 180도 모호성</title>
+        <g class="sketch">
+          <line class="ln st-ye lbl" x1="90" y1="125" x2="590" y2="125" stroke-width="2" stroke-dasharray="8 7"/>
+          <path class="ln st-bl" stroke-width="2.5" d="M340 125 C300 125 300 60 340 60 C380 60 380 125 340 125 C300 125 300 190 340 190 C380 190 380 125 340 125 Z"/>
+          <ellipse class="ln st-or" cx="340" cy="125" rx="5" ry="18" stroke-width="4"/>
+          <circle class="ln chalk" cx="70" cy="125" r="17" stroke-width="2.4"/>
+          <circle class="ln chalk" cx="610" cy="125" r="17" stroke-width="2.4"/>
+        </g>
+        <text class="k" x="70" y="131" text-anchor="middle">?</text>
+        <text class="k" x="610" y="131" text-anchor="middle">?</text>
+        <g class="lbl">
+          <text class="k" x="70" y="172" text-anchor="middle">후보 A</text>
+          <text class="e" x="70" y="189" text-anchor="middle">TX candidate</text>
+          <text class="k" x="610" y="172" text-anchor="middle">후보 B</text>
+          <text class="e" x="610" y="189" text-anchor="middle">TX candidate</text>
+          <text class="k" x="340" y="222" text-anchor="middle">널 방향 = 방위선 · 앞뒤 구분 불가</text>
+          <text class="e" x="340" y="239" text-anchor="middle">Bearing line with 180° ambiguity</text>
+          <text class="s hl" x="470" y="115" text-anchor="middle">방위선</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>가운데 수신 루프의 널(노란 선 방향)로 방위선을 얻지만, 송신소가 양쪽 중 어느 쪽인지는 알 수 없음.</figcaption>
+  </figure>
+
+  <p>실제 ARDF 80 m 수신기는 지름 수 cm의 루프 대신 <span class="term">페라이트 봉 안테나<i>(ferrite rod antenna)</i></span>를 쓰는 경우가 많습니다. 페라이트 봉에 코일을 감은 것으로, 동작은 소형 루프와 같으며 <b>봉의 길이 방향이 널</b>입니다. 휴대용 AM 라디오를 돌리면 특정 방향에서 방송이 약해지는 것도 같은 원리입니다.</p>
+
+  <!-- 3 -->
+  <h2 id="sense">센스 안테나와 심장형 패턴<span class="en">Sense antenna and the cardioid</span></h2>
+  <p>180° 모호성은 <span class="term">센스 안테나<i>(sense antenna)</i></span>로 해결합니다. 소형 루프의 8자 패턴은 한쪽 로브와 반대쪽 로브의 위상이 반대입니다. 여기에 모든 방향에서 같은 위상·크기로 수신하는 짧은 수직 휩의 신호를 적절한 위상으로 더하면, 한쪽 로브는 보강되고 반대쪽 로브는 상쇄되어 널이 하나뿐인 <span class="term">심장형 패턴<i>(cardioid)</i></span>이 됩니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 290" role="img" aria-labelledby="l3t">
+        <title id="l3t">위상이 반대인 루프의 8자 패턴과 센스 안테나의 원형 패턴을 더하면 심장형 패턴이 되는 그림</title>
+        <g class="sketch">
+          <path class="ln st-bl draw" pathLength="1" stroke-width="3" d="M125.0 160.0 L125.6 165.7 L127.4 171.2 L130.3 176.2 L134.1 180.4 L138.8 183.8 L144.0 186.2 L149.6 187.3 L155.4 187.3 L161.0 186.2 L166.2 183.8 L170.9 180.4 L174.7 176.2 L177.6 171.2 L179.4 165.7 L180.0 160.0 L179.4 154.3 L177.6 148.8 L174.7 143.8 L170.9 139.6 L166.2 136.2 L161.0 133.8 L155.4 132.7 L149.6 132.7 L144.0 133.8 L138.8 136.2 L134.1 139.6 L130.3 143.8 L127.4 148.8 L125.6 154.3 L125.0 160.0 Z"/>
+          <path class="ln st-re draw" pathLength="1" stroke-width="3" d="M125.0 160.0 L124.4 154.3 L122.6 148.8 L119.7 143.8 L115.9 139.6 L111.3 136.2 L106.0 133.8 L100.4 132.7 L94.6 132.7 L89.0 133.8 L83.8 136.2 L79.1 139.6 L75.3 143.8 L72.4 148.8 L70.6 154.3 L70.0 160.0 L70.6 165.7 L72.4 171.2 L75.3 176.2 L79.1 180.4 L83.8 183.8 L89.0 186.2 L94.6 187.3 L100.4 187.3 L106.0 186.2 L111.3 183.8 L115.9 180.4 L119.7 176.2 L122.6 171.2 L124.4 165.7 L125.0 160.0 Z"/>
+          <circle class="ln st-bl draw d2" pathLength="1" cx="340" cy="160" r="50" stroke-width="3"/>
+          <path class="ln st-bl draw d3" pathLength="1" stroke-width="3.5" d="M660.0 160.0 L659.2 149.6 L656.7 139.4 L652.8 129.9 L647.4 121.1 L640.8 113.3 L633.2 106.8 L624.8 101.7 L615.8 98.0 L606.7 95.8 L597.5 95.0 L588.6 95.7 L580.2 97.8 L572.6 100.9 L565.8 105.1 L560.0 110.0 L555.3 115.5 L551.8 121.3 L549.3 127.1 L547.9 132.9 L547.5 138.3 L547.9 143.3 L548.9 147.7 L550.5 151.4 L552.3 154.4 L554.2 156.7 L556.1 158.2 L557.7 159.2 L558.9 159.8 L559.7 160.0 L560.0 160.0 L559.7 160.0 L558.9 160.2 L557.7 160.8 L556.1 161.8 L554.2 163.3 L552.3 165.6 L550.5 168.6 L548.9 172.3 L547.9 176.7 L547.5 181.7 L547.9 187.1 L549.3 192.9 L551.8 198.7 L555.3 204.5 L560.0 210.0 L565.8 214.9 L572.6 219.1 L580.2 222.2 L588.6 224.3 L597.5 225.0 L606.7 224.2 L615.8 222.0 L624.8 218.3 L633.2 213.2 L640.8 206.7 L647.4 198.9 L652.8 190.1 L656.7 180.6 L659.2 170.4 L660.0 160.0 Z"/>
+        </g>
+        <circle cx="125" cy="160" r="4" fill="#e8893a"/>
+        <circle cx="340" cy="160" r="4" fill="#e8893a"/>
+        <circle cx="560" cy="160" r="4" fill="#e8893a"/>
+        <text class="tt" x="232" y="168" text-anchor="middle">+</text>
+        <text class="tt" x="452" y="168" text-anchor="middle">=</text>
+        <text class="tt" x="125" y="40" text-anchor="middle">루프</text>
+        <text class="e" x="125" y="58" text-anchor="middle">Loop · figure-eight</text>
+        <text class="tt" x="340" y="40" text-anchor="middle">센스 안테나</text>
+        <text class="e" x="340" y="58" text-anchor="middle">Sense whip · omnidirectional</text>
+        <text class="tt" x="590" y="40" text-anchor="middle">합성</text>
+        <text class="e" x="590" y="58" text-anchor="middle">Cardioid</text>
+        <g class="lbl">
+          <text class="k bl" x="160" y="118" text-anchor="middle">+</text>
+          <text class="k" x="90" y="118" text-anchor="middle" style="fill:#e0675a">−</text>
+          <text class="k" x="125" y="226" text-anchor="middle">양쪽 로브 역위상</text>
+          <text class="e" x="125" y="243" text-anchor="middle">Opposite phase lobes</text>
+          <text class="k" x="340" y="240" text-anchor="middle">모든 방향 동일</text>
+          <text class="e" x="340" y="257" text-anchor="middle">Same phase all around</text>
+          <text class="k hl" x="540" y="134" text-anchor="end">널 하나</text>
+          <text class="e" x="540" y="151" text-anchor="end">Single null</text>
+          <text class="k" x="600" y="260" text-anchor="middle">한쪽만 강함 → 앞뒤 판별</text>
+          <text class="e" x="600" y="277" text-anchor="middle">Resolves front and back</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>파란 로브(+)와 빨간 로브(−)는 서로 역위상. 센스 안테나 신호와 더하면 + 쪽은 보강되고 − 쪽은 상쇄됨. 크기가 같고 위상이 맞을 때 이상적인 심장형이 됨.</figcaption>
+  </figure>
+
+  <h3>ARDF 수신기에서의 사용 순서<span class="en">Procedure on an ARDF receiver</span></h3>
+  <p>① 센스 스위치를 끈 상태에서 루프(페라이트 봉)를 돌려 <b>널</b>을 찾고, 그 방향으로 방위선을 정합니다. ② 센스 스위치를 켜고 방위선의 양쪽 방향으로 수신기를 향해 봅니다. ③ 신호가 강한 쪽이 송신소 방향입니다. 심장형 패턴의 널은 8자 패턴의 널보다 넓고 얕기 때문에, 정확한 방위는 ①의 루프 널로 정하고 센스는 앞뒤 판별에만 사용합니다.</p>
+
+  <div class="box key">
+    <b>방향탐지 시 주의</b>
+    <p>송신소에 가까워지면 신호가 너무 강해 널이 얕아지므로 수신기 감도(RF 이득)를 낮춰야 널이 다시 뚜렷해집니다. 또한 전력선, 철제 구조물, 차량 근처에서는 재방사로 널 방향이 틀어지므로, 이런 물체에서 떨어진 위치에서 방위를 측정합니다.</p>
+  </div>
+
+  <!-- 4 -->
+  <h2 id="magloop">송신용 마그네틱 루프<span class="en">Small transmitting loop</span></h2>
+  <p>소형 루프는 송신 안테나로도 쓰입니다. 지름 1~2 m 정도의 굵은 도체 루프에 가변 커패시터를 연결해 공진시키고, 작은 <span class="term">결합 루프<i>(coupling loop)</i></span>로 급전합니다. 아파트 베란다, 좁은 마당, 이동운용처럼 큰 안테나를 설치하기 어려운 환경에서 사용합니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 310" role="img" aria-labelledby="l4t">
+        <title id="l4t">주 루프, 위쪽 튜닝 커패시터, 아래쪽 결합 루프와 동축 케이블로 구성된 마그네틱 루프</title>
+        <g class="sketch">
+          <path class="ln st-or draw" pathLength="1" d="M326 58 A96 96 0 1 0 354 58" stroke-width="9"/>
+          <line class="ln chalk" x1="326" y1="58" x2="332" y2="58" stroke-width="3"/>
+          <line class="ln chalk" x1="332" y1="42" x2="332" y2="74" stroke-width="3.5"/>
+          <line class="ln chalk" x1="348" y1="42" x2="348" y2="74" stroke-width="3.5"/>
+          <line class="ln chalk" x1="348" y1="58" x2="354" y2="58" stroke-width="3"/>
+          <line class="ln chalk" x1="324" y1="80" x2="356" y2="36" stroke-width="1.6" marker-end="url(#ah-c)"/>
+          <circle class="ln st-bl draw d2" pathLength="1" cx="340" cy="226" r="20" stroke-width="3"/>
+          <line class="ln faint" x1="340" y1="246" x2="340" y2="300" stroke-width="5"/>
+        </g>
+        <g class="lbl">
+          <text class="k" x="372" y="40">튜닝 커패시터</text>
+          <text class="e" x="372" y="57">Tuning capacitor · 고전압</text>
+          <text class="k" x="452" y="150">주 루프 · 굵은 구리관</text>
+          <text class="e" x="452" y="167">Main loop, low-loss conductor</text>
+          <line x1="362" y1="226" x2="444" y2="232" stroke="#a9b0b6" stroke-width="1" stroke-dasharray="3 4"/>
+          <text class="k" x="452" y="236">결합 루프 · 주 루프 지름의 약 1/5</text>
+          <text class="e" x="452" y="253">Coupling loop</text>
+          <text class="k" x="356" y="292">동축 케이블</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>주 루프는 커패시터와 함께 공진 회로를 이루고, 아래의 작은 결합 루프가 50 Ω 동축 케이블과 자기적으로 결합해 정합함.</figcaption>
+  </figure>
+
+  <p>소형 루프의 방사 저항은 매우 작습니다. 예를 들어 지름 1 m 루프의 방사 저항은 7 MHz에서 약 6 mΩ 수준입니다. 따라서 도체와 접합부의 저항이 수 mΩ만 되어도 효율이 크게 떨어지므로, 굵은 구리관을 쓰고 접합부는 납땜이나 용접으로 처리합니다. 커패시터도 손실이 적은 진공 가변이나 버터플라이형 공기 가변을 사용합니다.</p>
+  <p>Q가 매우 높아 대역폭이 수 kHz 정도로 좁기 때문에, 주파수를 조금만 바꿔도 다시 동조해야 합니다. 또한 커패시터 양단에는 100 W 송신에서도 수 kV의 고전압이 걸리므로, 송신 중에는 루프와 커패시터에 손이 닿지 않도록 해야 합니다.</p>
+
+  <!-- 5 -->
+  <h2 id="fullwave">1파장 루프<span class="en">Full-wave loops</span></h2>
+  <p>둘레 약 1파장의 루프는 HF에서 수평으로 펼친 <span class="term">수평 루프<i>(horizontal loop)</i></span>, 삼각형으로 세운 <span class="term">델타 루프<i>(delta loop)</i></span>, 정사각형 소자를 쓰는 <span class="term">쿼드<i>(quad)</i></span> 등으로 사용됩니다. 급전점 임피던스는 약 100~120 Ω이므로, 75 Ω 동축 케이블로 만든 1/4파장 정합 선로나 2 : 1 발룬으로 50 Ω에 맞춥니다.</p>
+  <p>편파는 급전점 위치로 정해집니다. 세운 루프의 아래 변 가운데에서 급전하면 수평 편파, 옆 변 가운데에서 급전하면 수직 편파가 됩니다. 쿼드는 이런 루프 소자로 만든 야기형 안테나로, 2소자 쿼드가 3소자 야기와 비슷한 이득을 냅니다.</p>
+
+  <!-- 6 -->
+  <h2 id="calc">크기 계산<span class="en">Size calculator</span></h2>
+  <p>주파수를 넣으면 소형 루프로 동작하는 최대 둘레와 1파장 루프의 도선 길이를 계산합니다. 1파장 루프는 다이폴과 반대로 실제 길이가 자유공간 파장보다 약 2% 깁니다.</p>
+
+  <div class="calc">
+    <label for="freq">주파수 <input id="freq" type="number" inputmode="decimal" min="0.1" step="0.001" value="3.55"> MHz</label>
+    <div class="calc-err" id="freq-err" role="alert"></div>
+    <div class="calc-out" aria-live="polite">
+      <div><span>파장 λ (300 / f)</span><b id="o-l">84.5 m</b></div>
+      <div><span>소형 루프 최대 둘레 (0.1λ)</span><b id="o-s">8.45 m</b></div>
+      <div><span>그때의 지름</span><b id="o-sd">2.69 m</b></div>
+      <div class="main"><span>1파장 루프 도선 (306 / f)</span><b id="o-f">86.2 m</b></div>
+      <div><span>정사각형 한 변</span><b id="o-sq">21.5 m</b></div>
+      <div><span>델타(정삼각형) 한 변</span><b id="o-dt">28.7 m</b></div>
+    </div>
+  </div>
+
+  <nav class="pager" aria-label="이전·다음 편">
+    <a class="pg prev" href="yagi.html"><span class="pg-dir">← 이전 편</span><span class="pg-title">야기-우다</span></a>
+    <span class="pg next soon"><span class="pg-dir">다음 편 →</span><span class="pg-title">로그 주기 <small>준비 중</small></span></span>
+  </nav>
+
+  <footer class="foot">6K5EHN · 그림으로 보는 햄 안테나</footer>
+</div>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var f = document.getElementById('freq'), err = document.getElementById('freq-err');
+  function fmt(m) { return m < 1 ? (m * 100).toFixed(1) + ' cm' : (m >= 10 ? m.toFixed(1) : m.toFixed(2)) + ' m'; }
+  function set(id, v) { document.getElementById(id).textContent = fmt(v); }
+  function calc() {
+    var v = parseFloat(f.value);
+    if (!(v > 0)) { err.textContent = '0보다 큰 주파수(MHz)를 입력하세요.'; return; }
+    err.textContent = '';
+    var l = 300 / v, fw = 306 / v;
+    set('o-l', l); set('o-s', 0.1 * l); set('o-sd', 0.1 * l / Math.PI);
+    set('o-f', fw); set('o-sq', fw / 4); set('o-dt', fw / 3);
+  }
+  f.addEventListener('input', calc);
+  calc();
+})();
+</script>
+</body>
+</html>

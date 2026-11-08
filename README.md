@@ -13,6 +13,7 @@ basics.html         안테나 기초: 방사, 공진, 패턴과 널, 이득, 편
 dipole.html         1편 다이폴
 monopole.html       2편 모노폴과 휩
 yagi.html           3편 야기-우다
+loop.html           4편 루프
 assets/common.css   공통 스타일 (칠판 그림, Pretendard, 한국어+원어 라벨)
 assets/site.js      그림 애니메이션 + iframe 높이 자동 맞춤
 tistory-embed.html  티스토리 글에 붙여 넣는 코드 (저장소에 없어도 되지만 참고용)
