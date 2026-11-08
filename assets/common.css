@@ -234,3 +234,5 @@ a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
 .calc-out b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; margin-top: 2px; }
 .calc-out div.main b { color: var(--accent); }
 .num { font-variant-numeric: tabular-nums; }
+.wrap ul { margin: 14px 0 0; padding-left: 1.3em; }
+.wrap li { margin-top: 6px; }
