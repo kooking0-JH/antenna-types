@@ -236,3 +236,7 @@ a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
 .num { font-variant-numeric: tabular-nums; }
 .wrap ul { margin: 14px 0 0; padding-left: 1.3em; }
 .wrap li { margin-top: 6px; }
+.calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.calc-grid label { flex-wrap: nowrap; white-space: nowrap; }
+.calc-grid input { width: 96px; font-size: 18px; }
+.calc .table-wrap { margin-top: 14px; }
