@@ -1,1 +1,36 @@
-# antenna-types
+# 안테나의 모든 종류 (antenna-types)
+
+다이폴부터 위상 배열까지 12가지 안테나의 원리와 쓰임을 칠판 그림으로 정리한 해설 페이지입니다.
+GitHub Pages로 게시하고, 티스토리 블로그(6k5ehn.tistory.com)에 iframe으로 넣어 씁니다.
+
+주소: https://kooking0-jh.github.io/antenna-types/
+
+## 파일 구성
+
+```
+index.html          목차 (12종 카드)
+basics.html         안테나 기초: 방사, 공진, 패턴과 널, 이득, 편파, SWR, 용어집
+assets/common.css   공통 스타일 (칠판 그림, Pretendard, 한국어+원어 라벨)
+assets/site.js      그림 애니메이션 + iframe 높이 자동 맞춤
+tistory-embed.html  티스토리 글에 붙여 넣는 코드 (저장소에 없어도 되지만 참고용)
+```
+
+## 올리는 방법
+
+1. GitHub에서 새 저장소 `antenna-types` 생성 (Public)
+2. 위 파일들을 폴더 구조 그대로 업로드 (`assets` 폴더 포함)
+3. Settings → Pages → Branch: `main` / `(root)` → Save
+4. 1~2분 뒤 https://kooking0-jh.github.io/antenna-types/ 접속 확인
+
+## 새 안테나 페이지 추가 규칙
+
+- `basics.html`을 복사해서 시작합니다. 맨 위 숨은 `<svg>`(필터·화살촉 정의)는 꼭 남겨 둡니다.
+- 그림은 `<figure class="fig"><div class="board"><svg viewBox="0 0 680 H">…` 형식.
+  - 선: `class="ln st-or|st-bl|st-ye|chalk|faint"`, 그려지는 효과는 `draw` + `pathLength="1"` (+ `d2`, `d3` 지연)
+  - 손그림 떨림: 선들을 `<g class="sketch">`로 감쌉니다. 글자는 감싸지 않습니다.
+  - 글자: 한국어 `class="k"`, 원어 `class="e"`(한국어 바로 아래 17px), 큰 제목 `tt`, 설명 `s`
+  - 나중에 나타날 라벨은 `<g class="lbl">`로 감쌉니다.
+- 본문 용어는 `<span class="term">널<i>(null)</i></span>` 형식으로 처음 나올 때 원어를 붙입니다.
+- 용어는 `basics.html` 용어집의 짝을 그대로 씁니다.
+- 상자: 핵심 `<div class="box key">`, 흔한 오해 `<div class="box myth">`
+- 완성되면 `index.html`의 해당 카드를 `<div class="card soon">` → `<a class="card" href="파일.html">`로 바꾸고 `준비 중` 배지를 지웁니다.
