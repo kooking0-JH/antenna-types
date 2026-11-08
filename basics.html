@@ -25,7 +25,7 @@
 
 <div class="wrap">
   <header class="series">
-    <a class="series-name" href="./">안테나의 모든 종류<span>Every antenna type</span></a>
+    <a class="series-name" href="./">그림으로 보는 햄 안테나<span>Ham antennas, illustrated</span></a>
     <a class="series-all" href="./">전체 목차</a>
   </header>
 
@@ -258,6 +258,12 @@
   <p>송신과 수신 안테나의 편파가 맞지 않으면 신호가 크게 약해집니다. 수평과 수직처럼 직각으로 엇갈리면 이론상 거의 받지 못하고, 실제로도 20 dB 넘게 떨어지는 경우가 흔합니다. 원편파 안테나로 직선 편파를 받으면 방향과 관계없이 약 3 dB 손실로 일정합니다. 위성처럼 자세가 계속 바뀌는 상대와 통신할 때 원편파를 쓰는 이유입니다.</p>
   <p>다만 HF는 전리층에서 반사되며 편파가 뒤섞이기 때문에, 수평 안테나와 수직 안테나 사이의 차이가 VHF·UHF의 직접파만큼 크지 않습니다. 편파를 엄격하게 맞춰야 하는 건 주로 VHF 이상의 직접파 통신입니다.</p>
 
+  <div class="box key">
+    <b>위성 통신 메모 · 헬리컬과 접시형</b>
+    <p>아마추어 위성처럼 자세가 계속 바뀌는 상대와는 원편파 안테나가 유리합니다. 대표적인 것이 <span class="term">헬리컬<i>(helical)</i></span>로, 나선 한 바퀴의 둘레를 약 1파장으로 감으면 축 방향으로 원편파 빔을 냅니다(축 모드). 둘레가 파장보다 훨씬 작으면 옆으로 선형 편파를 내는 전혀 다른 동작(노멀 모드)이 되므로, 촘촘하게 감는다고 원편파가 되는 것은 아닙니다.</p>
+    <p>마이크로파 대역에서는 <span class="term">접시형<i>(parabolic dish)</i></span> 반사기로 전파를 초점의 급전부에 모아 큰 이득을 얻습니다. 이득은 대략 (접시 지름 / 파장)²에 비례해, 같은 접시라도 주파수가 높을수록 빔이 좁고 이득이 커집니다. 정지궤도 위성 QO-100 운용에서는 접시 초점에 헬리컬이나 패치 급전부를 다는 구성이 흔합니다.</p>
+  </div>
+
   <!-- 6 -->
   <h2 id="impedance">임피던스와 SWR<span class="en">Impedance and SWR</span></h2>
   <p>송신기와 동축 케이블은 대부분 50 Ω에 맞춰져 있습니다. 안테나 급전점의 <span class="term">임피던스<i>(impedance)</i></span>가 50 Ω과 다르면, 케이블을 따라 간 전력의 일부가 안테나에서 되돌아옵니다. 가는 파와 되돌아오는 파가 겹쳐 케이블 위에 생기는 전압의 최대·최소 비율이 <span class="term">정재파비<i>(SWR)</i></span>입니다.</p>
@@ -339,7 +345,7 @@
     <span class="pg next soon"><span class="pg-dir">다음 편 →</span><span class="pg-title">다이폴 <small>준비 중</small></span></span>
   </nav>
 
-  <footer class="foot">6K5EHN · 안테나의 모든 종류</footer>
+  <footer class="foot">6K5EHN · 그림으로 보는 햄 안테나</footer>
 </div>
 <script src="assets/site.js"></script>
 </body>

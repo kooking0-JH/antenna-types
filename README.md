@@ -1,6 +1,6 @@
-# 안테나의 모든 종류 (antenna-types)
+# 그림으로 보는 햄 안테나 (antenna-types)
 
-다이폴부터 위상 배열까지 12가지 안테나의 원리와 쓰임을 칠판 그림으로 정리한 해설 페이지입니다.
+햄 무선의 주력 안테나 다섯 가지(다이폴, 모노폴·휩, 야기, 루프, 로그 주기)의 원리와 쓰임을 칠판 그림으로 정리한 해설 페이지입니다.
 GitHub Pages로 게시하고, 티스토리 블로그(6k5ehn.tistory.com)에 iframe으로 넣어 씁니다.
 
 주소: https://kooking0-jh.github.io/antenna-types/
@@ -8,7 +8,7 @@ GitHub Pages로 게시하고, 티스토리 블로그(6k5ehn.tistory.com)에 ifra
 ## 파일 구성
 
 ```
-index.html          목차 (12종 카드)
+index.html          목차 (기초 + 안테나 5종 카드)
 basics.html         안테나 기초: 방사, 공진, 패턴과 널, 이득, 편파, SWR, 용어집
 assets/common.css   공통 스타일 (칠판 그림, Pretendard, 한국어+원어 라벨)
 assets/site.js      그림 애니메이션 + iframe 높이 자동 맞춤
