@@ -50,3 +50,8 @@ tistory-embed.html  티스토리 글에 붙여 넣는 코드 (저장소에 없�
 - SVG 색상은 직접 쓰지 않고 클래스로: 선 st-or·st-bl·st-ye·st-re·st-gr·chalk·faint·dim, 글자 hl·or·bl·re, 도형 채우기 fc(분필)·fo(주황)·fb(칠판). 예외: 맨 위 공통 정의의 화살촉(marker)은 색상 코드를 직접 씀.
 - 비유는 이해를 확실히 돕는 경우에만 한 페이지에 한두 개(예: 이득의 풍선 비유).
 - 용어는 basics.html 용어집의 한국어·원어 짝을 그대로 쓰고, 새 용어가 생기면 용어집에 먼저 추가.
+
+## 캐시 주의
+
+GitHub Pages는 파일을 최대 10분간 캐시합니다. `assets/common.css`나 `assets/site.js`를 고친 뒤에는
+모든 HTML의 `?v=20261109b` 부분을 새 값(예: 날짜+알파벳)으로 바꿔야 브라우저와 블로그가 새 파일을 받습니다.
