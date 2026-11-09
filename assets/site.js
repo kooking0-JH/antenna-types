@@ -76,17 +76,23 @@
   if (!embedded) return;
 
   // 3-a) iframe 높이 자동 맞춤
+  //  블로그 쪽 스크립트가 늦게 실행되어 첫 신호를 놓칠 수 있으므로
+  //  ① 처음 몇 초 동안 여러 번 보내고 ② 블로그가 요청(ping)하면 즉시 다시 보냄
   var last = 0;
-  function send() {
+  function send(force) {
     var h = Math.ceil(document.body.getBoundingClientRect().height);
-    if (Math.abs(h - last) < 2) return;
+    if (!force && Math.abs(h - last) < 2) return;
     last = h;
     window.parent.postMessage({ type: 'antenna-types:height', page: location.pathname, height: h }, '*');
   }
-  if ('ResizeObserver' in window) new ResizeObserver(send).observe(document.body);
-  window.addEventListener('load', send);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(send);
-  send();
+  if ('ResizeObserver' in window) new ResizeObserver(function () { send(false); }).observe(document.body);
+  window.addEventListener('load', function () { send(true); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { send(true); });
+  [300, 1000, 2500, 5000, 9000].forEach(function (t) { setTimeout(function () { send(true); }, t); });
+  window.addEventListener('message', function (e) {
+    if (e.source === window.parent && e.data && e.data.type === 'antenna-types:ping') send(true);
+  });
+  send(true);
 
   // 3-b) 페이지 안 링크(#)를 누르면 블로그 화면 자체를 그 위치로 스크롤
   document.addEventListener('click', function (ev) {
