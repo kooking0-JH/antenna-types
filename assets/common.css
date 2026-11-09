@@ -242,3 +242,6 @@ a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
 .calc .table-wrap { margin-top: 14px; }
 .board .re { fill: var(--c-red); }
 .dim { stroke: var(--chalk-dim); }
+.board .fc { fill: var(--chalk); }
+.board .fo { fill: var(--c-orange); }
+.board .fb { fill: var(--board); }
