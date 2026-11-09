@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>그 밖의 안테나</title>
+<meta name="description" content="위성 통신에 쓰이는 헬리컬 안테나(축 모드·노멀 모드)와 접시형 안테나(포물면 반사기)의 원리와 간단한 계산">
+<script>(function(){var r=document.documentElement;r.classList.add('js');var t=new URLSearchParams(location.search).get('theme'),e;try{e=self!==top}catch(x){e=true}if(t==='dark'||t==='light')r.setAttribute('data-theme',t);else if(e)r.setAttribute('data-theme','light');})()</script>
+<link rel="stylesheet" href="assets/common.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.6"/>
+    </filter>
+    <marker id="ah-c" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1L8 5L1 9" fill="none" stroke="#f2efe6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="ah-b" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1L8 5L1 9" fill="none" stroke="#7fb8d8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="series">
+    <a class="series-name" href="./">그림으로 보는 햄 안테나<span>Ham antennas, illustrated</span></a>
+    <a class="series-all" href="./">전체 목차</a>
+  </header>
+
+  <h1>그 밖의 안테나<span class="en">Others · helical &amp; dish</span></h1>
+  <p class="lead">아마추어 위성 운용에서 자주 쓰이는 두 안테나, 원편파를 만드는 헬리컬과 마이크로파 대역에서 큰 이득을 얻는 접시형을 간단히 정리합니다.</p>
+
+  <nav class="toc" aria-label="이 페이지 목차">
+    <div class="toc-title">이 페이지에서 다루는 내용</div>
+    <ol></ol>
+  </nav>
+
+  <!-- 1 -->
+  <h2 id="helical">헬리컬<span class="en">Helical antenna</span></h2>
+  <p><span class="term">헬리컬<i>(helical)</i></span> 안테나는 도선을 나선형으로 감은 안테나로, 나선의 둘레가 파장에 비해 어느 정도인지에 따라 동작 방식이 완전히 달라집니다.</p>
+  <ul>
+    <li><span class="term">축 모드<i>(axial mode)</i></span>: 둘레가 약 1파장(0.75~1.33λ)이고 감는 각도가 약 12~14°일 때, 나선 축 방향으로 원편파 빔을 형성합니다. 뒤쪽에 지름 0.75λ 이상의 반사판을 둡니다. 위성 통신용 헬리컬이 이 형태입니다.</li>
+    <li><span class="term">노멀 모드<i>(normal mode)</i></span>: 둘레가 파장보다 충분히 작으면 나선 축에 수직인 옆 방향으로 선형 편파를 방사합니다. 축을 세워 두면 짧은 수직 모노폴처럼 동작하며, 핸디의 고무 안테나가 이 형태입니다.</li>
+  </ul>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 300" role="img" aria-labelledby="o1t">
+        <title id="o1t">둘레가 1파장인 축 모드 헬리컬은 축 방향으로 원편파 빔을, 둘레가 작은 노멀 모드 헬리컬은 옆 방향으로 선형 편파를 방사</title>
+        <g class="sketch">
+          <line class="ln chalk" x1="80" y1="80" x2="80" y2="220" stroke-width="5"/>
+          <line class="ln faint" x1="80" y1="150" x2="100" y2="150" stroke-width="4"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="110" cy="150" rx="8" ry="40" stroke-width="3.5"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="140" cy="150" rx="8" ry="40" stroke-width="3.5"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="170" cy="150" rx="8" ry="40" stroke-width="3.5"/>
+          <ellipse class="ln st-or draw d2" pathLength="1" cx="200" cy="150" rx="8" ry="40" stroke-width="3.5"/>
+          <ellipse class="ln st-or draw d2" pathLength="1" cx="230" cy="150" rx="8" ry="40" stroke-width="3.5"/>
+          <ellipse class="ln st-or draw d2" pathLength="1" cx="260" cy="150" rx="8" ry="40" stroke-width="3.5"/>
+          <line class="ln st-bl draw d3" pathLength="1" x1="282" y1="150" x2="330" y2="150" stroke-width="3" marker-end="url(#ah-b)"/>
+          <path class="ln st-bl lbl" d="M316 128 A22 22 0 1 1 296 150" stroke-width="2" marker-end="url(#ah-b)"/>
+
+          <rect class="ln chalk" x="522" y="176" width="46" height="80" rx="7" stroke-width="2.5"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="545" cy="166" rx="9" ry="3" stroke-width="3"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="545" cy="156" rx="9" ry="3" stroke-width="3"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="545" cy="146" rx="9" ry="3" stroke-width="3"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="545" cy="136" rx="9" ry="3" stroke-width="3"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="545" cy="126" rx="9" ry="3" stroke-width="3"/>
+          <ellipse class="ln st-or draw" pathLength="1" cx="545" cy="116" rx="9" ry="3" stroke-width="3"/>
+          <line class="ln st-bl draw d2" pathLength="1" x1="566" y1="140" x2="618" y2="140" stroke-width="3" marker-end="url(#ah-b)"/>
+          <line class="ln st-bl draw d2" pathLength="1" x1="524" y1="140" x2="472" y2="140" stroke-width="3" marker-end="url(#ah-b)"/>
+        </g>
+        <text class="tt" x="190" y="40" text-anchor="middle">축 모드</text>
+        <text class="e" x="190" y="58" text-anchor="middle">Axial mode · 둘레 ≈ 1λ</text>
+        <text class="tt" x="545" y="40" text-anchor="middle">노멀 모드</text>
+        <text class="e" x="545" y="58" text-anchor="middle">Normal mode · 둘레 ≪ λ</text>
+        <g class="lbl">
+          <text class="s" x="80" y="242" text-anchor="middle">반사판</text>
+          <text class="k" x="190" y="270" text-anchor="middle">축 방향 · 원편파 빔</text>
+          <text class="e" x="190" y="287" text-anchor="middle">Circularly polarized beam</text>
+          <text class="k" x="545" y="282" text-anchor="middle">옆 방향 · 선형 편파</text>
+          <text class="e" x="545" y="299" text-anchor="middle">Broadside, linear</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>왼쪽: 반사판 앞에 감은 축 모드 헬리컬. 오른쪽: 핸디 위의 작은 노멀 모드 헬리컬(고무 안테나 내부). 두 그림의 크기 비율은 실제와 다름.</figcaption>
+  </figure>
+
+  <p>축 모드 헬리컬의 급전점 임피던스는 약 100~150 Ω이므로, 첫 번째 감은 부분을 반사판에 가깝게 붙이거나 짧은 정합 도체를 덧대어 50 Ω으로 맞춥니다. 감는 방향에 따라 우선회 또는 좌선회 원편파가 결정되므로, 상대 안테나와 선회 방향을 맞춰야 합니다. 또한 원편파는 반사면에서 반사될 때 선회 방향이 반대로 바뀌므로, 접시의 급전부로 헬리컬을 쓸 때는 원하는 편파와 반대 방향으로 감습니다.</p>
+
+  <!-- 2 -->
+  <h2 id="dish">접시형<span class="en">Parabolic dish</span></h2>
+  <p><span class="term">접시형<i>(parabolic dish)</i></span> 안테나는 포물면 반사기와 그 초점에 둔 작은 <span class="term">급전부<i>(feed)</i></span>로 구성됩니다. 포물면의 성질 때문에 축과 나란하게 들어온 전파는 반사된 뒤 모두 같은 경로 길이로 초점에 모이며, 같은 위상으로 더해져 큰 이득을 얻습니다. 송신은 그 반대로, 초점에서 나간 전파가 반사되어 평행한 빔이 됩니다.</p>
+
+  <figure class="fig">
+    <div class="board">
+      <svg viewBox="0 0 680 300" role="img" aria-labelledby="o2t">
+        <title id="o2t">축과 나란히 들어온 전파가 포물면에서 반사되어 초점의 급전부에 모이는 접시형 안테나</title>
+        <g class="sketch">
+          <line class="ln faint" x1="200" y1="150" x2="640" y2="150" stroke-width="1.2" stroke-dasharray="4 6"/>
+          <line class="ln st-bl draw" pathLength="1" x1="640" y1="70" x2="218" y2="70" stroke-width="2.4" marker-end="url(#ah-b)"/>
+          <line class="ln st-bl draw" pathLength="1" x1="640" y1="105" x2="206" y2="105" stroke-width="2.4" marker-end="url(#ah-b)"/>
+          <line class="ln st-bl draw" pathLength="1" x1="640" y1="195" x2="206" y2="195" stroke-width="2.4" marker-end="url(#ah-b)"/>
+          <line class="ln st-bl draw" pathLength="1" x1="640" y1="230" x2="218" y2="230" stroke-width="2.4" marker-end="url(#ah-b)"/>
+          <line class="ln st-ye draw d2" pathLength="1" x1="218" y1="70" x2="284" y2="146" stroke-width="2"/>
+          <line class="ln st-ye draw d2" pathLength="1" x1="206" y1="105" x2="284" y2="148" stroke-width="2"/>
+          <line class="ln st-ye draw d2" pathLength="1" x1="206" y1="195" x2="284" y2="152" stroke-width="2"/>
+          <line class="ln st-ye draw d2" pathLength="1" x1="218" y1="230" x2="284" y2="154" stroke-width="2"/>
+          <path class="ln st-or" stroke-width="7" d="M227.8 50 L222.5 60 L217.8 70 L213.6 80 L210.0 90 L206.9 100 L204.4 110 L202.5 120 L201.1 130 L200.3 140 L200.0 150 L200.3 160 L201.1 170 L202.5 180 L204.4 190 L206.9 200 L210.0 210 L213.6 220 L217.8 230 L222.5 240 L227.8 250"/>
+          <line class="ln faint" x1="196" y1="150" x2="150" y2="270" stroke-width="5"/>
+          <line class="ln faint" x1="225" y1="54" x2="283" y2="143" stroke-width="1.5"/>
+          <line class="ln faint" x1="225" y1="246" x2="283" y2="157" stroke-width="1.5"/>
+        </g>
+        <rect x="282" y="141" width="18" height="18" rx="3" fill="#f2efe6"/>
+        <g class="lbl">
+          <text class="k hl" x="310" y="128">초점 · 급전부</text>
+          <text class="e" x="310" y="143">Focus &amp; feed</text>
+          <text class="k" x="40" y="40">포물면 반사기</text>
+          <text class="e" x="40" y="57">Parabolic reflector</text>
+          <text class="k" x="470" y="38" text-anchor="middle">축과 나란히 들어온 전파</text>
+          <text class="e" x="470" y="55" text-anchor="middle">Incoming plane wave</text>
+          <text class="s" x="560" y="142" text-anchor="middle">축</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>파란 선은 들어오는 전파, 노란 선은 반사 후 초점으로 모이는 경로. 초점은 반사면 앞쪽 공간에 있으며, 급전부는 지지대로 그 위치에 고정함.</figcaption>
+  </figure>
+
+  <p>이득은 접시 지름과 파장의 비로 정해지며, 대략 다음 식으로 계산합니다. η는 <span class="term">개구 효율<i>(aperture efficiency)</i></span>로, 일반적인 접시에서 0.5~0.6입니다.</p>
+  <div class="formula">이득 G ≈ η · (π D / λ)²　　3 dB 빔폭 ≈ 70 · λ / D (도)</div>
+  <p>같은 접시라도 주파수가 두 배가 되면 이득은 약 6 dB 높아지고 빔폭은 절반이 됩니다. 정지궤도 위성 QO-100 운용에서는 지름 60~120 cm 접시로 2.4 GHz 업링크와 10 GHz 다운링크를 함께 처리하며, 초점에 헬리컬이나 패치 급전부와 위성 방송용 LNB를 같이 다는 구성이 흔합니다. 빔폭이 수 도에 불과하므로 방향 조정이 정밀해야 합니다.</p>
+
+  <div class="box myth">
+    <b>흔한 오해 · "초점은 접시 표면에 있다"</b>
+    <p>포물면의 초점은 반사면 앞쪽 공간에 있습니다. 초점과 접시 지름의 비 f/D는 보통 0.3~0.6이며, 오프셋 접시(위성 방송용 타원형 접시)는 포물면의 일부만 잘라 쓰기 때문에 급전부가 빔 경로 밖에 놓입니다.</p>
+  </div>
+
+  <!-- 3 -->
+  <h2 id="calc">간단 계산<span class="en">Quick calculator</span></h2>
+  <p>주파수를 넣으면 축 모드 헬리컬의 기본 치수와 접시의 이득·빔폭을 계산합니다.</p>
+
+  <div class="calc">
+    <div class="calc-grid">
+      <label for="freq">주파수 <input id="freq" type="number" inputmode="decimal" min="1" step="1" value="2400"> MHz</label>
+      <label for="dia">접시 지름 <input id="dia" type="number" inputmode="decimal" min="0.05" step="0.05" value="0.8"> m</label>
+    </div>
+    <div class="calc-err" id="o-err" role="alert"></div>
+    <div class="calc-out" aria-live="polite">
+      <div><span>파장 λ</span><b id="o-l">–</b></div>
+      <div class="main"><span>헬리컬 지름 (λ / π)</span><b id="o-hd">–</b></div>
+      <div><span>헬리컬 감는 간격 (0.22λ, 약 12.5°)</span><b id="o-hs">–</b></div>
+      <div><span>반사판 최소 지름 (0.75λ)</span><b id="o-gp">–</b></div>
+      <div class="main"><span>접시 이득 (η = 0.55)</span><b id="o-g">–</b></div>
+      <div><span>접시 3 dB 빔폭</span><b id="o-bw">–</b></div>
+    </div>
+  </div>
+
+  <nav class="pager" aria-label="이전·다음 편">
+    <a class="pg prev" href="lpda.html"><span class="pg-dir">← 이전 편</span><span class="pg-title">로그 주기</span></a>
+    <a class="pg next" href="./"><span class="pg-dir">처음으로 →</span><span class="pg-title">전체 목차</span></a>
+  </nav>
+
+  <footer class="foot">6K5EHN · 그림으로 보는 햄 안테나</footer>
+</div>
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function len(m) { return m < 1 ? (m * 100).toFixed(1) + ' cm' : m.toFixed(2) + ' m'; }
+  function calc() {
+    var f = parseFloat($('freq').value), d = parseFloat($('dia').value), err = $('o-err');
+    if (!(f > 0) || !(d > 0)) {
+      err.textContent = '주파수와 접시 지름은 0보다 커야 합니다.';
+      ['o-l','o-hd','o-hs','o-gp','o-g','o-bw'].forEach(function (k) { $(k).textContent = '–'; });
+      return;
+    }
+    err.textContent = '';
+    var l = 300 / f;
+    $('o-l').textContent = len(l);
+    $('o-hd').textContent = len(l / Math.PI);
+    $('o-hs').textContent = len(0.22 * l);
+    $('o-gp').textContent = len(0.75 * l);
+    var g = 0.55 * Math.pow(Math.PI * d / l, 2);
+    $('o-g').textContent = (10 * Math.log10(g)).toFixed(1) + ' dBi';
+    var bw = 70 * l / d;
+    $('o-bw').textContent = bw > 90 ? '접시가 너무 작음' : bw.toFixed(1) + '°';
+  }
+  ['freq','dia'].forEach(function (k) { $(k).addEventListener('input', calc); });
+  calc();
+})();
+</script>
+</body>
+</html>
