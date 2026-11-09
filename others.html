@@ -84,7 +84,7 @@
     <figcaption>왼쪽: 반사판 앞에 감은 축 모드 헬리컬. 오른쪽: 핸디 위의 작은 노멀 모드 헬리컬(고무 안테나 내부). 두 그림의 크기 비율은 실제와 다름.</figcaption>
   </figure>
 
-  <p>축 모드 헬리컬의 급전점 임피던스는 약 100~150 Ω이므로, 첫 번째 감은 부분을 반사판에 가깝게 붙이거나 짧은 정합 도체를 덧대어 50 Ω으로 맞춥니다. 감는 방향에 따라 우선회 또는 좌선회 원편파가 결정되므로, 상대 안테나와 선회 방향을 맞춰야 합니다. 또한 원편파는 반사면에서 반사될 때 선회 방향이 반대로 바뀌므로, 접시의 급전부로 헬리컬을 쓸 때는 원하는 편파와 반대 방향으로 감습니다.</p>
+  <p>축 모드 헬리컬의 급전점 임피던스는 약 100~150 Ω이므로, 첫 번째 감은 부분을 반사판에 가깝게 붙이거나 짧은 정합 도체를 덧대어 50 Ω으로 맞춥니다. 감는 방향에 따라 우선회 또는 좌선회 원편파가 결정되므로, 상대 안테나와 선회 방향을 맞춰야 합니다. 일반 나사처럼 오른나사 방향으로 감으면, 즉 급전점에서 빔 진행 방향을 바라볼 때 시계 방향으로 감겨 나가면 우선회 원편파(RHCP), 반대로 감으면 좌선회 원편파(LHCP)입니다. 또한 원편파는 반사면에서 반사될 때 선회 방향이 반대로 바뀌므로, 접시의 급전부로 헬리컬을 쓸 때는 원하는 편파와 반대 방향으로 감습니다.</p>
 
   <!-- 2 -->
   <h2 id="dish">접시형<span class="en">Parabolic dish</span></h2>
@@ -113,8 +113,9 @@
         <g class="lbl">
           <text class="k hl" x="310" y="128">초점 · 급전부</text>
           <text class="e" x="310" y="143">Focus &amp; feed</text>
-          <text class="k" x="40" y="40">포물면 반사기</text>
-          <text class="e" x="40" y="57">Parabolic reflector</text>
+          <text class="k" x="70" y="40">포물면 반사기</text>
+          <text class="e" x="70" y="57">Parabolic reflector</text>
+          <line class="ln dim" x1="180" y1="52" x2="218" y2="62" stroke-width="1" stroke-dasharray="3 4"/>
           <text class="k" x="470" y="38" text-anchor="middle">축과 나란히 들어온 전파</text>
           <text class="e" x="470" y="55" text-anchor="middle">Incoming plane wave</text>
           <text class="s" x="560" y="142" text-anchor="middle">축</text>
@@ -125,7 +126,7 @@
   </figure>
 
   <p>이득은 접시 지름과 파장의 비로 정해지며, 대략 다음 식으로 계산합니다. η는 <span class="term">개구 효율<i>(aperture efficiency)</i></span>로, 일반적인 접시에서 0.5~0.6입니다.</p>
-  <div class="formula">이득 G ≈ η · (π D / λ)²　　3 dB 빔폭 ≈ 70 · λ / D (도)</div>
+  <div class="formula">이득 G ≈ η · (π D / λ)²　→　dBi = 10 log₁₀ G　　3 dB 빔폭 ≈ 70 · λ / D (도)</div>
   <p>같은 접시라도 주파수가 두 배가 되면 이득은 약 6 dB 높아지고 빔폭은 절반이 됩니다. 정지궤도 위성 QO-100 운용에서는 지름 60~120 cm 접시로 2.4 GHz 업링크와 10 GHz 다운링크를 함께 처리하며, 초점에 헬리컬이나 패치 급전부와 위성 방송용 LNB를 같이 다는 구성이 흔합니다. 빔폭이 수 도에 불과하므로 방향 조정이 정밀해야 합니다.</p>
 
   <div class="box myth">
@@ -144,12 +145,12 @@
     </div>
     <div class="calc-err" id="o-err" role="alert"></div>
     <div class="calc-out" aria-live="polite">
-      <div><span>파장 λ</span><b id="o-l">–</b></div>
-      <div class="main"><span>헬리컬 지름 (λ / π)</span><b id="o-hd">–</b></div>
-      <div><span>헬리컬 감는 간격 (0.22λ, 약 12.5°)</span><b id="o-hs">–</b></div>
-      <div><span>반사판 최소 지름 (0.75λ)</span><b id="o-gp">–</b></div>
-      <div class="main"><span>접시 이득 (η = 0.55)</span><b id="o-g">–</b></div>
-      <div><span>접시 3 dB 빔폭</span><b id="o-bw">–</b></div>
+      <div><span>파장 λ</span><b id="o-l">12.5 cm</b></div>
+      <div class="main"><span>헬리컬 지름 (λ / π)</span><b id="o-hd">4.0 cm</b></div>
+      <div><span>헬리컬 감는 간격 (0.22λ, 약 12.5°)</span><b id="o-hs">2.8 cm</b></div>
+      <div><span>반사판 최소 지름 (0.75λ)</span><b id="o-gp">9.4 cm</b></div>
+      <div class="main"><span>접시 이득 (η = 0.55)</span><b id="o-g">23.5 dBi</b></div>
+      <div><span>접시 3 dB 빔폭</span><b id="o-bw">10.9°</b></div>
     </div>
   </div>
 

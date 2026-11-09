@@ -240,3 +240,5 @@ a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
 .calc-grid label { flex-wrap: nowrap; white-space: nowrap; }
 .calc-grid input { width: 96px; font-size: 18px; }
 .calc .table-wrap { margin-top: 14px; }
+.board .re { fill: var(--c-red); }
+.dim { stroke: var(--chalk-dim); }
