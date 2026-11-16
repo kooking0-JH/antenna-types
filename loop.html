@@ -6,7 +6,7 @@
 <title>루프 안테나</title>
 <meta name="description" content="소형 루프와 1파장 루프의 패턴 차이, 널을 이용한 방향탐지와 센스 안테나·심장형 패턴, 송신용 마그네틱 루프">
 <script>(function(){var r=document.documentElement;r.classList.add('js');var t=new URLSearchParams(location.search).get('theme'),e;try{e=self!==top}catch(x){e=true}if(t==='dark'||t==='light')r.setAttribute('data-theme',t);else if(e)r.setAttribute('data-theme','light');})()</script>
-<link rel="stylesheet" href="assets/common.css?v=20261109c">
+<link rel="stylesheet" href="assets/common.css?v=20261116a">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -142,8 +142,8 @@
           <text class="e" x="340" y="257" text-anchor="middle">Same phase all around</text>
           <text class="k hl" x="540" y="134" text-anchor="end">널 하나</text>
           <text class="e" x="540" y="151" text-anchor="end">Single null</text>
-          <text class="k" x="600" y="260" text-anchor="middle">한쪽만 강함 → 앞뒤 판별</text>
-          <text class="e" x="600" y="277" text-anchor="middle">Resolves front and back</text>
+          <text class="k m-sm" x="560" y="260" text-anchor="middle">한쪽만 강함 → 앞뒤 판별</text>
+          <text class="e m-sm" x="560" y="277" text-anchor="middle">Resolves front and back</text>
         </g>
       </svg>
     </div>
@@ -180,15 +180,15 @@
           <text class="k" x="372" y="40">튜닝 커패시터</text>
           <text class="e" x="372" y="57">Tuning capacitor · 고전압</text>
           <text class="k" x="452" y="150">주 루프 · 굵은 구리관</text>
-          <text class="e" x="452" y="167">Main loop, low-loss conductor</text>
+          <text class="e m-sm" x="452" y="167">Main loop, low-loss conductor</text>
           <line class="ln dim" x1="362" y1="226" x2="444" y2="232" stroke-width="1" stroke-dasharray="3 4"/>
-          <text class="k" x="452" y="236">결합 루프 · 주 루프 지름의 약 1/5</text>
+          <text class="k" x="452" y="236">결합 루프</text>
           <text class="e" x="452" y="253">Coupling loop</text>
           <text class="k" x="356" y="292">동축 케이블</text>
         </g>
       </svg>
     </div>
-    <figcaption>주 루프는 커패시터와 함께 공진 회로를 이루고, 아래의 작은 결합 루프가 50 Ω 동축 케이블과 자기적으로 결합해 정합함.</figcaption>
+    <figcaption>주 루프는 커패시터와 함께 공진 회로를 이루고, 아래의 작은 결합 루프(지름은 주 루프의 약 1/5)가 50 Ω 동축 케이블과 자기적으로 결합해 정합함.</figcaption>
   </figure>
 
   <p>소형 루프의 방사 저항은 매우 작습니다. 예를 들어 지름 1 m 루프의 방사 저항은 7 MHz에서 약 6 mΩ 수준입니다. 따라서 도체와 접합부의 저항이 수 mΩ만 되어도 효율이 크게 떨어지므로, 굵은 구리관을 쓰고 접합부는 납땜이나 용접으로 처리합니다. 커패시터도 손실이 적은 진공 가변이나 버터플라이형 공기 가변을 사용합니다.</p>
@@ -223,7 +223,7 @@
 
   <footer class="foot">6K5EHN · 그림으로 보는 햄 안테나</footer>
 </div>
-<script src="assets/site.js?v=20261109c"></script>
+<script src="assets/site.js?v=20261116a"></script>
 <script>
 (function () {
   var f = document.getElementById('freq'), err = document.getElementById('freq-err');

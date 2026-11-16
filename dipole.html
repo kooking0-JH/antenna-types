@@ -6,7 +6,7 @@
 <title>다이폴 안테나</title>
 <meta name="description" content="반파장 다이폴의 구조, 길이 계산, 높이에 따른 방사각, 인버티드 V·폴디드·팬 다이폴, 발룬과 조정 방법">
 <script>(function(){var r=document.documentElement;r.classList.add('js');var t=new URLSearchParams(location.search).get('theme'),e;try{e=self!==top}catch(x){e=true}if(t==='dark'||t==='light')r.setAttribute('data-theme',t);else if(e)r.setAttribute('data-theme','light');})()</script>
-<link rel="stylesheet" href="assets/common.css?v=20261109c">
+<link rel="stylesheet" href="assets/common.css?v=20261116a">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -66,8 +66,8 @@
           <text class="e" x="86" y="133">End insulator</text>
           <text class="k" x="594" y="116" text-anchor="end">끝단 애자</text>
           <text class="e" x="594" y="133" text-anchor="end">End insulator</text>
-          <text class="k" x="362" y="134">급전점 · 1 : 1 발룬</text>
-          <text class="e" x="362" y="151">Feed point &amp; balun</text>
+          <text class="k" x="362" y="134" style="--my:30px">급전점 · 1 : 1 발룬</text>
+          <text class="e" x="362" y="151" style="--my:30px">Feed point &amp; balun</text>
           <text class="k" x="356" y="214">동축 케이블</text>
           <text class="e" x="356" y="231">Coax, 50 Ω</text>
         </g>
@@ -200,14 +200,14 @@
         <text class="e" x="555" y="58" text-anchor="middle">Fan dipole</text>
         <g class="lbl">
           <text class="s" x="178" y="128">90~120°</text>
-          <text class="k" x="125" y="275" text-anchor="middle">지지대 하나 · 약 50 Ω</text>
-          <text class="e" x="125" y="292" text-anchor="middle">One support</text>
-          <text class="k" x="340" y="248" text-anchor="middle">약 300 Ω · 대역이 넓음</text>
-          <text class="e" x="340" y="265" text-anchor="middle">About 4× the impedance</text>
+          <text class="k m-sm" x="125" y="275" text-anchor="middle">지지대 하나 · 약 50 Ω</text>
+          <text class="e m-sm" x="125" y="292" text-anchor="middle">One support</text>
+          <text class="k m-sm" x="340" y="248" text-anchor="middle">약 300 Ω · 대역이 넓음</text>
+          <text class="e m-sm" x="340" y="265" text-anchor="middle">About 4× the impedance</text>
           <text class="s or" x="466" y="102">긴 쌍 40 m</text>
           <text class="s hl" x="652" y="196" text-anchor="end">짧은 쌍 20 m</text>
-          <text class="k" x="555" y="248" text-anchor="middle">여러 밴드 · 급전선 하나</text>
-          <text class="e" x="555" y="265" text-anchor="middle">Multi-band, one feed line</text>
+          <text class="k m-sm" x="555" y="248" text-anchor="middle">여러 밴드 · 급전선 하나</text>
+          <text class="e m-sm" x="555" y="265" text-anchor="middle">Multi-band, one feed line</text>
         </g>
       </svg>
     </div>
@@ -258,11 +258,11 @@
         <g class="lbl">
           <text class="k" x="200" y="180">외피 전류</text>
           <text class="e" x="200" y="197">Common-mode current</text>
-          <text class="s" x="200" y="218">급전선도 방사</text>
+          <text class="s" x="200" y="218" style="--my:5px">급전선도 방사</text>
           <text class="k" x="536" y="128">초크</text>
-          <text class="e" x="536" y="145">Coax coiled on ferrite</text>
+          <text class="e" x="536" y="145">Coax on ferrite</text>
           <text class="k" x="536" y="210">외피 전류 차단</text>
-          <text class="e" x="536" y="227">Feed line stays quiet</text>
+          <text class="e" x="536" y="227">Quiet feed line</text>
         </g>
       </svg>
     </div>
@@ -284,7 +284,7 @@
 
   <footer class="foot">6K5EHN · 그림으로 보는 햄 안테나</footer>
 </div>
-<script src="assets/site.js?v=20261109c"></script>
+<script src="assets/site.js?v=20261116a"></script>
 <script>
 (function () {
   var f = document.getElementById('freq'), err = document.getElementById('freq-err');
