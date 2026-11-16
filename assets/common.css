@@ -151,6 +151,19 @@ a { color: var(--accent); }
 .board .tt { font-size: 19px; font-weight: 700; }
 .board .s  { font-size: 14px; font-weight: 400; }
 .board .hl { fill: var(--c-yellow); }
+/* 휴대폰(폭 560px 이하): 그림이 약 절반으로 줄어 글자가 6~8px이 되므로 그림 속 글자만 키움.
+   영어 원어 라벨은 키운 만큼 아래로 내려 한국어 라벨과 겹치지 않게 함 */
+@media (max-width: 560px) {
+  .board { padding: 6px; }
+  .board .k  { font-size: 21px; }
+  .board .e  { font-size: 16px; --ey: 4px; }
+  .board .tt { font-size: 24px; }
+  .board .s  { font-size: 18px; }
+  /* 글자가 커져 부딪히는 몇 곳만 휴대폰에서 옮김: 요소에 style="--mx:..; --my:.."를 적어 둠(데스크톱에는 영향 없음) */
+  .board text { transform: translate(var(--mx, 0px), calc(var(--my, 0px) + var(--ey, 0px))); }
+  .board .k.m-sm { font-size: 17px; }
+  .board .e.m-sm { font-size: 13px; }
+}
 .board .or { fill: var(--c-orange); }
 .board .bl { fill: var(--c-blue); }
 .ln { fill: none; stroke-linecap: round; stroke-linejoin: round; }
