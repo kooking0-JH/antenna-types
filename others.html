@@ -38,7 +38,7 @@
   <h2 id="helical">헬리컬<span class="en">Helical antenna</span></h2>
   <p><span class="term">헬리컬<i>(helical)</i></span> 안테나는 도선을 나선형으로 감은 안테나로, 나선의 둘레가 파장에 비해 어느 정도인지에 따라 동작 방식이 완전히 달라집니다.</p>
   <ul>
-    <li><span class="term">축 모드<i>(axial mode)</i></span>: 둘레가 약 1파장(0.75~1.33λ)이고 감는 각도가 약 12~14°일 때, 나선 축 방향으로 원편파 빔을 형성합니다. 뒤쪽에 지름 0.75λ 이상의 반사판을 둡니다. 위성 통신용 헬리컬이 이 형태입니다.</li>
+    <li><span class="term">축 모드<i>(axial mode)</i></span>: 둘레가 약 1파장(0.75~1.33λ)이고 감는 각도가 약 12~14°일 때, 나선 축 방향으로 원편파 빔을 형성합니다. 뒤쪽에 지름 약 0.8~1.1λ의 반사판을 둡니다. 이보다 크면 부 로브가 커집니다. 위성 통신용 헬리컬이 이 형태입니다.</li>
     <li><span class="term">노멀 모드<i>(normal mode)</i></span>: 둘레가 파장보다 충분히 작으면 나선 축에 수직인 옆 방향으로 선형 편파를 방사합니다. 축을 세워 두면 짧은 수직 모노폴처럼 동작하며, 핸디의 고무 안테나가 이 형태입니다.</li>
   </ul>
 
@@ -148,7 +148,7 @@
       <div><span>파장 λ</span><b id="o-l">12.5 cm</b></div>
       <div class="main"><span>헬리컬 지름 (λ / π)</span><b id="o-hd">4.0 cm</b></div>
       <div><span>헬리컬 감는 간격 (0.22λ, 약 12.5°)</span><b id="o-hs">2.8 cm</b></div>
-      <div><span>반사판 최소 지름 (0.75λ)</span><b id="o-gp">9.4 cm</b></div>
+      <div><span>반사판 지름 (0.8~1.1λ)</span><b id="o-gp">10.0 cm ~ 13.8 cm</b></div>
       <div class="main"><span>접시 이득 (η = 0.55)</span><b id="o-g">23.5 dBi</b></div>
       <div><span>접시 3 dB 빔폭</span><b id="o-bw">10.9°</b></div>
     </div>
@@ -178,7 +178,7 @@
     $('o-l').textContent = len(l);
     $('o-hd').textContent = len(l / Math.PI);
     $('o-hs').textContent = len(0.22 * l);
-    $('o-gp').textContent = len(0.75 * l);
+    $('o-gp').textContent = len(0.8 * l) + ' ~ ' + len(1.1 * l);
     var g = 0.55 * Math.pow(Math.PI * d / l, 2);
     $('o-g').textContent = (10 * Math.log10(g)).toFixed(1) + ' dBi';
     var bw = 70 * l / d;
